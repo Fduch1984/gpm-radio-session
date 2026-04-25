@@ -187,6 +187,10 @@
       background:linear-gradient(135deg,var(--blue),var(--accent));
       display:flex; align-items:center; justify-content:center;
       font-size:15px; font-weight:700; flex-shrink:0; color:#fff;
+      overflow:hidden;
+    }
+    .avatar img, .modal-avatar img {
+      width:100%; height:100%; object-fit:cover; border-radius:50%;
     }
     .p-name { font-weight:700; font-size:15px; margin-bottom:2px; }
     .p-role { font-size:12px; color:var(--blue); font-weight:600; margin-bottom:2px; }
@@ -605,7 +609,7 @@
       </div>
 
       <div class="participant-card" data-id="andryushova" data-company="ГПМР" onclick="openModal('andryushova')">
-        <div class="avatar" style="background:linear-gradient(135deg,#2563EB,#0ea5e9)">ЮА</div>
+        <div class="avatar"><img src="photos/Андрюшова.png" alt="Юля Андрюшова"></div>
         <div>
           <div class="p-name">Юля Андрюшова</div>
           <div class="p-role">Директор по PR, аналитике и спецпроектам</div>
@@ -625,7 +629,7 @@
       </div>
 
       <div class="participant-card" data-id="ipatova" data-company="ГПМР" onclick="openModal('ipatova')">
-        <div class="avatar" style="background:linear-gradient(135deg,#2563EB,#0ea5e9)">ИИ</div>
+        <div class="avatar"><img src="photos/Ипатова.png" alt="Ирина Ипатова"></div>
         <div>
           <div class="p-name">Ирина Ипатова</div>
           <div class="p-role">Генеральный продюсер</div>
@@ -645,7 +649,7 @@
       </div>
 
       <div class="participant-card" data-id="fink" data-company="ГПМР" onclick="openModal('fink')">
-        <div class="avatar" style="background:linear-gradient(135deg,#2563EB,#0ea5e9)">ТФ</div>
+        <div class="avatar"><img src="photos/Финк.png" alt="Татьяна Финк"></div>
         <div>
           <div class="p-name">Татьяна Финк</div>
           <div class="p-role">Директор по персоналу</div>
@@ -655,7 +659,7 @@
       </div>
 
       <div class="participant-card" data-id="samukova" data-company="ГПМР" onclick="openModal('samukova')">
-        <div class="avatar" style="background:linear-gradient(135deg,#2563EB,#0ea5e9)">ЕС</div>
+        <div class="avatar"><img src="photos/Самукова.png" alt="Екатерина Самукова"></div>
         <div>
           <div class="p-name">Екатерина Самукова</div>
           <div class="p-role">—</div>
@@ -821,7 +825,7 @@
       'Премия команды зависит от реализованных проектов — низкий процент подтверждения (часто из-за неумения менеджеров донести идею) бьёт по вознаграждению.',
       'Ждёт от сессии не формального примирения, а реальной трансформации: диалоговой модели работы с нейтральным медиатором.',
     ]},
-    andryushova: { name:'Юля Андрюшова', role:'Директор по PR, аналитике и спецпроектам', dept:'ГПМР', initials:'ЮА', bg:'linear-gradient(135deg,#2563EB,#0ea5e9)', theses:[
+    andryushova: { name:'Юля Андрюшова', role:'Директор по PR, аналитике и спецпроектам', dept:'ГПМР', initials:'ЮА', bg:'linear-gradient(135deg,#2563EB,#0ea5e9)', photo:'photos/Андрюшова.png', theses:[
       'Руководит тремя направлениями: PR, аналитика и коммерческие спецпроекты; фокус на оптимизации конверсии и снижении нагрузки команды.',
       'Рост числа запросов при падении конверсии; серьёзное выгорание сотрудников — срываются дедлайны, падает качество идей.',
       'SH присылает слишком много вариантов, не сужая выбор; менеджеры пересылают предложения, не вникая в суть — клиенты недовольны.',
@@ -835,7 +839,7 @@
       'Ежемесячные встречи с SH «бестолковые» — участники молчат на них, а потом обращаются индивидуально с теми же вопросами.',
       'Цели: повысить конверсию на 15-20%, улучшить качество брифов, наладить взаимоуважение; очная сессия — ключевое событие для изменений.',
     ]},
-    ipatova: { name:'Ирина Ипатова', role:'Генеральный продюсер', dept:'ГПМР', initials:'ИИ', bg:'linear-gradient(135deg,#2563EB,#0ea5e9)', theses:[
+    ipatova: { name:'Ирина Ипатова', role:'Генеральный продюсер', dept:'ГПМР', initials:'ИИ', bg:'linear-gradient(135deg,#2563EB,#0ea5e9)', photo:'photos/Ипатова.png', theses:[
       'Главный барьер — физическая и структурная удалённость Sales House: по её оценке, 90% проблем решилось бы, если бы продажи и продукт работали в одной компании и офисе.',
       'Продюсеры станций финально ответственны за спецпроекты, но не имеют прямого доступа к клиенту — это размывает ответственность и снижает качество коммуникации.',
       'Конверсия падает не из-за нехватки идей, а из-за разрыва между презентацией и реальным диалогом с клиентом.',
@@ -849,14 +853,14 @@
       'Перешли на кастомизированные предложения, но продаж пока нет — возможно, новые детальные механики стоят дороже, чем клиенты привыкли платить.',
       'Ждёт от сессии: узнать реальные причины отказов от SH и наладить прямой контакт с клиентом после продажи — без «испорченного телефона».',
     ]},
-    fink: { name:'Татьяна Финк', role:'Директор по персоналу', dept:'ГПМР', initials:'ТФ', bg:'linear-gradient(135deg,#2563EB,#0ea5e9)', theses:[
+    fink: { name:'Татьяна Финк', role:'Директор по персоналу', dept:'ГПМР', initials:'ТФ', bg:'linear-gradient(135deg,#2563EB,#0ea5e9)', photo:'photos/Финк.png', theses:[
       'Коммуникация между SH и отделом спецпроектов слабая, несмотря на общую мотивацию к росту выручки — сотрудники «валят друг на друга», нет единого понимания целей.',
       'Позиция руководителей транслируется на команды: если руководители не доверяют друг другу, сотрудники воспроизводят ту же модель.',
       'Регулярные встречи часто превращаются в обсуждение взаимных претензий — эффективность зависит от качества модерации.',
       'Предлагает ротацию модераторов между отделами как инструмент развития компетенций и смены угла зрения.',
       'Ключевой сдвиг: с «что я должен получить» на «что я могу дать партнёру» — это меняет динамику взаимодействия.',
     ] },
-    samukova: { name:'Екатерина Самукова', role:'Рук. отдела коммерческих неэфирных проектов', dept:'ГПМР', initials:'ЕС', bg:'linear-gradient(135deg,#2563EB,#0ea5e9)', theses:[
+    samukova: { name:'Екатерина Самукова', role:'Рук. отдела коммерческих неэфирных проектов', dept:'ГПМР', initials:'ЕС', bg:'linear-gradient(135deg,#2563EB,#0ea5e9)', photo:'photos/Самукова.png', theses:[
       'SH продаёт спецпроекты медийным менеджерам по критерию «цена за контакт» — это делает предложение неконкурентоспособным; нужно выходить на бренд-менеджеров, ценящих эксклюзивность события.',
       'Мотивационный барьер: комиссия за спецпроекты (15%) против прямой рекламы (28%); сотрудники SH сами признали, что «не умеют продавать мероприятия».',
       'Бюрократическая цепочка убивает скорость: каждое звено «прикрывается» вместо продвижения проекта — кейс «Аллея звёзд» ушёл в продажу на месяц позже срока.',
@@ -891,8 +895,14 @@
   function openModal(id) {
     const p = people[id];
     if (!p) return;
-    document.getElementById('modal-avatar').textContent = p.initials;
-    document.getElementById('modal-avatar').style.background = p.bg;
+    const mav = document.getElementById('modal-avatar');
+    if (p.photo) {
+      mav.innerHTML = `<img src="${p.photo}" alt="${p.name}">`;
+      mav.style.background = 'none';
+    } else {
+      mav.innerHTML = p.initials;
+      mav.style.background = p.bg;
+    }
     document.getElementById('modal-name').textContent = p.name;
     document.getElementById('modal-role').textContent = p.role;
     document.getElementById('modal-dept').textContent = p.dept;
