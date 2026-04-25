@@ -28,7 +28,7 @@
       min-height: 100vh;
     }
 
-    /* ── HEADER ────────────────────────────────────── */
+    /* ── HEADER ─────────────────────────────────────── */
     header {
       background: #fff;
       border-bottom: 3px solid var(--blue);
@@ -43,357 +43,243 @@
       box-shadow: 0 2px 8px rgba(0,91,181,.08);
     }
 
-    .logo {
-      display: flex;
-      align-items: center;
-      gap: 16px;
-      text-decoration: none;
-    }
-
-    /* ── GPM RADIO LOGO SVG ─────────────────────────── */
+    .logo { display: flex; align-items: center; gap: 16px; text-decoration: none; }
     .logo-svg { height: 36px; width: auto; }
-
-    .logo-divider {
-      width: 1px;
-      height: 28px;
-      background: var(--border);
-    }
-
-    .logo-title {
-      color: var(--text);
-      font-size: 15px;
-      font-weight: 600;
-      letter-spacing: -0.2px;
-    }
+    .logo-divider { width: 1px; height: 28px; background: var(--border); }
+    .logo-title { color: var(--text); font-size: 15px; font-weight: 600; }
 
     .header-date {
-      color: var(--muted);
-      font-size: 13px;
-      background: var(--blue-lt);
-      padding: 4px 12px;
-      border-radius: 20px;
-      border: 1px solid var(--blue-md);
+      color: var(--muted); font-size: 13px;
+      background: var(--blue-lt); padding: 4px 12px;
+      border-radius: 20px; border: 1px solid var(--blue-md);
     }
 
-    /* ── NAV TABS ───────────────────────────────────── */
+    /* ── NAV ────────────────────────────────────────── */
     nav {
-      background: #fff;
-      border-bottom: 1px solid var(--border);
-      display: flex;
-      padding: 0 2rem;
-      overflow-x: auto;
-      scrollbar-width: none;
+      background: #fff; border-bottom: 1px solid var(--border);
+      display: flex; padding: 0 2rem;
+      overflow-x: auto; scrollbar-width: none;
     }
     nav::-webkit-scrollbar { display: none; }
-
     nav button {
-      background: none;
-      border: none;
+      background: none; border: none;
       border-bottom: 3px solid transparent;
-      color: var(--muted);
-      cursor: pointer;
-      font-size: 14px;
-      font-weight: 500;
-      padding: 14px 20px;
-      transition: color .2s, border-color .2s;
+      color: var(--muted); cursor: pointer;
+      font-size: 14px; font-weight: 500;
+      padding: 14px 20px; transition: color .2s, border-color .2s;
       white-space: nowrap;
     }
-
     nav button:hover  { color: var(--blue); }
     nav button.active { color: var(--blue); border-bottom-color: var(--blue); font-weight: 600; }
 
-    /* ── MAIN LAYOUT ────────────────────────────────── */
+    /* ── LAYOUT ─────────────────────────────────────── */
     main { max-width: 1100px; margin: 0 auto; padding: 2.5rem 2rem 4rem; }
-
     .section { display: none; }
     .section.active { display: block; }
 
     h2 {
-      font-size: 20px;
-      font-weight: 700;
-      margin-bottom: 1.5rem;
-      color: var(--text);
-      display: flex;
-      align-items: center;
-      gap: 10px;
+      font-size: 20px; font-weight: 700; margin-bottom: 1.5rem;
+      display: flex; align-items: center; gap: 10px;
     }
     h2::before {
-      content: '';
-      display: inline-block;
-      width: 4px;
-      height: 20px;
-      background: var(--blue);
-      border-radius: 2px;
+      content: ''; display: inline-block;
+      width: 4px; height: 20px;
+      background: var(--blue); border-radius: 2px;
     }
 
-    /* ── CARDS ──────────────────────────────────────── */
     .card {
-      background: var(--surface);
-      border: 1px solid var(--border);
-      border-radius: 10px;
-      padding: 1.5rem;
-      margin-bottom: 1rem;
+      background: var(--surface); border: 1px solid var(--border);
+      border-radius: 10px; padding: 1.5rem; margin-bottom: 1rem;
     }
 
-    /* ── HERO BANNER ────────────────────────────────── */
+    /* ── HERO ───────────────────────────────────────── */
     .hero {
       background: linear-gradient(135deg, var(--blue-dk) 0%, var(--blue) 60%, #1a7fd4 100%);
-      border-radius: 12px;
-      padding: 2.2rem 2.5rem;
-      margin-bottom: 2rem;
-      color: #fff;
-      position: relative;
-      overflow: hidden;
+      border-radius: 12px; padding: 2.2rem 2.5rem; margin-bottom: 2rem;
+      color: #fff; position: relative; overflow: hidden;
     }
-    .hero::after {
-      content: '';
-      position: absolute;
-      right: -40px;
-      top: -40px;
-      width: 200px;
-      height: 200px;
-      border-radius: 50%;
-      background: rgba(255,255,255,.06);
-    }
-    .hero::before {
-      content: '';
-      position: absolute;
-      right: 60px;
-      bottom: -60px;
-      width: 280px;
-      height: 280px;
-      border-radius: 50%;
-      background: rgba(255,255,255,.04);
-    }
-    .hero h1 { font-size: 26px; font-weight: 800; margin-bottom: 6px; position: relative; }
-    .hero p  { color: rgba(255,255,255,.75); font-size: 15px; position: relative; }
+    .hero::after  { content:''; position:absolute; right:-40px; top:-40px; width:200px; height:200px; border-radius:50%; background:rgba(255,255,255,.06); }
+    .hero::before { content:''; position:absolute; right:60px; bottom:-60px; width:280px; height:280px; border-radius:50%; background:rgba(255,255,255,.04); }
+    .hero h1 { font-size:26px; font-weight:800; margin-bottom:6px; position:relative; }
+    .hero p  { color:rgba(255,255,255,.75); font-size:15px; position:relative; }
 
     .meta-grid {
-      display: grid;
-      grid-template-columns: repeat(auto-fill, minmax(190px, 1fr));
-      gap: 1rem;
-      margin-top: 1.8rem;
-      position: relative;
+      display: grid; grid-template-columns: repeat(auto-fill, minmax(190px,1fr));
+      gap: 1rem; margin-top: 1.8rem; position: relative;
     }
     .meta-item {
-      background: rgba(255,255,255,.12);
-      border: 1px solid rgba(255,255,255,.18);
-      border-radius: 8px;
-      padding: .8rem 1rem;
+      background: rgba(255,255,255,.12); border: 1px solid rgba(255,255,255,.18);
+      border-radius: 8px; padding: .8rem 1rem;
     }
-    .meta-label { font-size: 11px; text-transform: uppercase; letter-spacing: 1px; color: rgba(255,255,255,.6); margin-bottom: 4px; }
-    .meta-value { font-size: 15px; font-weight: 700; color: #fff; }
+    .meta-label { font-size:11px; text-transform:uppercase; letter-spacing:1px; color:rgba(255,255,255,.6); margin-bottom:4px; }
+    .meta-value { font-size:15px; font-weight:700; color:#fff; }
 
     /* ── QUICK ACCESS ───────────────────────────────── */
-    .quick-grid {
-      display: grid;
-      grid-template-columns: repeat(auto-fill, minmax(230px, 1fr));
-      gap: 1rem;
-    }
-
+    .quick-grid { display:grid; grid-template-columns:repeat(auto-fill,minmax(230px,1fr)); gap:1rem; }
     .quick-card {
-      background: var(--surface);
-      border: 1px solid var(--border);
-      border-radius: 10px;
-      padding: 1.4rem 1.5rem;
-      cursor: pointer;
-      transition: border-color .2s, box-shadow .2s, transform .15s;
+      background:var(--surface); border:1px solid var(--border); border-radius:10px;
+      padding:1.4rem 1.5rem; cursor:pointer;
+      transition:border-color .2s, box-shadow .2s, transform .15s;
     }
-    .quick-card:hover {
-      border-color: var(--blue);
-      box-shadow: 0 4px 16px rgba(0,91,181,.12);
-      transform: translateY(-2px);
-    }
-    .quick-card .icon { font-size: 26px; margin-bottom: 10px; }
-    .quick-card .title { font-weight: 700; font-size: 15px; margin-bottom: 4px; color: var(--text); }
-    .quick-card .desc  { font-size: 13px; color: var(--muted); }
+    .quick-card:hover { border-color:var(--blue); box-shadow:0 4px 16px rgba(0,91,181,.12); transform:translateY(-2px); }
+    .quick-card .icon  { font-size:26px; margin-bottom:10px; }
+    .quick-card .title { font-weight:700; font-size:15px; margin-bottom:4px; }
+    .quick-card .desc  { font-size:13px; color:var(--muted); }
 
-    /* ── SCHEDULE ───────────────────────────────────── */
-    .timeline-item {
-      display: flex;
-      gap: 1.5rem;
-    }
-
-    .time-col {
-      width: 80px;
-      flex-shrink: 0;
-      text-align: right;
-    }
-
-    .time-range {
-      font-size: 13px;
-      font-weight: 700;
-      color: var(--blue);
-      padding-top: 1.2rem;
-      white-space: nowrap;
-    }
-
-    .timeline-body {
-      flex: 1;
-      border-left: 2px solid var(--border);
-      padding: 0 0 0 1.5rem;
-      position: relative;
-    }
-
+    /* ── TIMELINE ───────────────────────────────────── */
+    .timeline-item { display:flex; gap:1.5rem; }
+    .time-col { width:80px; flex-shrink:0; text-align:right; }
+    .time-range { font-size:13px; font-weight:700; color:var(--blue); padding-top:1.2rem; white-space:nowrap; }
+    .timeline-body { flex:1; border-left:2px solid var(--border); padding:0 0 0 1.5rem; position:relative; }
     .timeline-body::before {
-      content: '';
-      position: absolute;
-      left: -6px;
-      top: 1.45rem;
-      width: 10px;
-      height: 10px;
-      border-radius: 50%;
-      background: var(--border);
-      border: 2px solid #fff;
+      content:''; position:absolute; left:-6px; top:1.45rem;
+      width:10px; height:10px; border-radius:50%;
+      background:var(--border); border:2px solid #fff;
     }
-
-    .timeline-item.highlight .timeline-body::before {
-      background: var(--blue);
-      border-color: var(--blue-lt);
-    }
-    .timeline-item.highlight .event-card { border-left-color: var(--blue); }
-
+    .timeline-item.highlight .timeline-body::before { background:var(--blue); border-color:var(--blue-lt); }
+    .timeline-item.highlight .event-card { border-left-color:var(--blue); }
     .event-card {
-      background: var(--surface);
-      border: 1px solid var(--border);
-      border-left: 3px solid var(--border);
-      border-radius: 8px;
-      padding: 1rem 1.2rem;
-      margin-bottom: 1.5rem;
-      transition: box-shadow .15s;
+      background:var(--surface); border:1px solid var(--border);
+      border-left:3px solid var(--border); border-radius:8px;
+      padding:1rem 1.2rem; margin-bottom:1.5rem; transition:box-shadow .15s;
     }
-    .event-card:hover { box-shadow: 0 2px 10px rgba(0,91,181,.08); }
-
-    .event-title { font-weight: 600; font-size: 15px; margin-bottom: 4px; color: var(--text); }
-    .event-meta  { font-size: 13px; color: var(--muted); }
-
-    .tag {
-      display: inline-block;
-      font-size: 11px;
-      font-weight: 600;
-      padding: 2px 8px;
-      border-radius: 4px;
-      margin-right: 4px;
-      margin-top: 6px;
-    }
-    .tag-break   { background: #E8F5E9; color: #2E7D32; }
-    .tag-plenary { background: #EDE7F6; color: #512DA8; }
-    .tag-group   { background: #E3F2FD; color: #1565C0; }
-    .tag-dinner  { background: #FFF3E0; color: #E65100; }
+    .event-card:hover { box-shadow:0 2px 10px rgba(0,91,181,.08); }
+    .event-title { font-weight:600; font-size:15px; margin-bottom:4px; }
+    .event-meta  { font-size:13px; color:var(--muted); }
+    .tag { display:inline-block; font-size:11px; font-weight:600; padding:2px 8px; border-radius:4px; margin-right:4px; margin-top:6px; }
+    .tag-break   { background:#E8F5E9; color:#2E7D32; }
+    .tag-plenary { background:#EDE7F6; color:#512DA8; }
+    .tag-group   { background:#E3F2FD; color:#1565C0; }
+    .tag-dinner  { background:#FFF3E0; color:#E65100; }
 
     /* ── PARTICIPANTS ───────────────────────────────── */
-    .participants-grid {
-      display: grid;
-      grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
-      gap: 1rem;
+    .filter-bar { display:flex; gap:.5rem; margin-bottom:1.5rem; flex-wrap:wrap; }
+    .fbtn {
+      background:var(--surface); border:1px solid var(--border);
+      border-radius:20px; color:var(--muted); cursor:pointer;
+      font-size:13px; font-weight:500; padding:5px 16px; transition:all .2s;
     }
+    .fbtn:hover  { border-color:var(--blue); color:var(--blue); }
+    .fbtn.active { background:var(--blue); border-color:var(--blue); color:#fff; }
+
+    .participants-grid { display:grid; grid-template-columns:repeat(auto-fill,minmax(280px,1fr)); gap:1rem; }
 
     .participant-card {
-      background: var(--surface);
-      border: 1px solid var(--border);
-      border-radius: 10px;
-      padding: 1.25rem 1.5rem;
-      display: flex;
-      gap: 1rem;
-      align-items: flex-start;
-      transition: border-color .2s, box-shadow .2s, transform .15s;
+      background:var(--surface); border:1px solid var(--border);
+      border-radius:10px; padding:1.25rem 1.5rem;
+      display:flex; gap:1rem; align-items:center;
+      cursor:pointer;
+      transition:border-color .2s, box-shadow .2s, transform .15s;
     }
     .participant-card:hover {
-      border-color: var(--blue);
-      box-shadow: 0 4px 14px rgba(0,91,181,.1);
-      transform: translateY(-2px);
+      border-color:var(--blue);
+      box-shadow:0 4px 14px rgba(0,91,181,.12);
+      transform:translateY(-2px);
     }
+    .participant-card .hint {
+      margin-left:auto; font-size:18px; color:var(--blue-md);
+      transition:color .2s;
+    }
+    .participant-card:hover .hint { color:var(--blue); }
 
     .avatar {
-      width: 48px;
-      height: 48px;
-      border-radius: 50%;
-      background: linear-gradient(135deg, var(--blue), var(--accent));
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      font-size: 16px;
-      font-weight: 700;
-      flex-shrink: 0;
-      color: #fff;
+      width:48px; height:48px; border-radius:50%;
+      background:linear-gradient(135deg,var(--blue),var(--accent));
+      display:flex; align-items:center; justify-content:center;
+      font-size:15px; font-weight:700; flex-shrink:0; color:#fff;
+    }
+    .p-name { font-weight:700; font-size:15px; margin-bottom:2px; }
+    .p-role { font-size:12px; color:var(--blue); font-weight:600; margin-bottom:2px; }
+    .p-dept { font-size:12px; color:var(--muted); }
+
+    /* ── MODAL ──────────────────────────────────────── */
+    .modal-overlay {
+      display:none; position:fixed; inset:0;
+      background:rgba(10,20,40,.45); backdrop-filter:blur(3px);
+      z-index:200; align-items:center; justify-content:center; padding:1rem;
+    }
+    .modal-overlay.open { display:flex; }
+
+    .modal {
+      background:#fff; border-radius:14px;
+      width:100%; max-width:540px; max-height:85vh;
+      overflow-y:auto; box-shadow:0 20px 60px rgba(0,30,80,.25);
+      animation:slideUp .2s ease;
+    }
+    @keyframes slideUp { from { transform:translateY(20px); opacity:0; } to { transform:translateY(0); opacity:1; } }
+
+    .modal-header {
+      display:flex; align-items:center; gap:1rem;
+      padding:1.4rem 1.5rem; border-bottom:1px solid var(--border);
+      position:sticky; top:0; background:#fff; border-radius:14px 14px 0 0;
+    }
+    .modal-avatar {
+      width:52px; height:52px; border-radius:50%;
+      display:flex; align-items:center; justify-content:center;
+      font-size:17px; font-weight:700; color:#fff; flex-shrink:0;
+    }
+    .modal-name { font-size:17px; font-weight:700; margin-bottom:2px; }
+    .modal-role { font-size:13px; color:var(--blue); font-weight:600; }
+    .modal-dept { font-size:12px; color:var(--muted); }
+    .modal-close {
+      margin-left:auto; background:var(--bg); border:none;
+      border-radius:50%; width:32px; height:32px;
+      font-size:18px; cursor:pointer; color:var(--muted);
+      display:flex; align-items:center; justify-content:center;
+      flex-shrink:0; transition:background .15s;
+    }
+    .modal-close:hover { background:var(--blue-md); }
+
+    .modal-body { padding:1.5rem; }
+    .modal-body h3 { font-size:13px; text-transform:uppercase; letter-spacing:1px; color:var(--muted); margin-bottom:.8rem; }
+
+    .thesis-list { list-style:none; }
+    .thesis-list li {
+      display:flex; gap:.8rem; padding:.65rem 0;
+      border-bottom:1px solid var(--border); font-size:14px; line-height:1.5;
+    }
+    .thesis-list li:last-child { border-bottom:none; }
+    .thesis-list li::before {
+      content:''; flex-shrink:0; width:6px; height:6px; border-radius:50%;
+      background:var(--blue); margin-top:.5rem;
     }
 
-    .p-name  { font-weight: 700; font-size: 15px; margin-bottom: 2px; color: var(--text); }
-    .p-role  { font-size: 12px; color: var(--blue); font-weight: 600; margin-bottom: 4px; }
-    .p-dept  { font-size: 13px; color: var(--muted); }
+    .no-summary {
+      color:var(--muted); font-size:14px; font-style:italic;
+      padding:1rem 0; text-align:center;
+    }
 
     /* ── DOCS ───────────────────────────────────────── */
-    .doc-list { list-style: none; }
+    .doc-list { list-style:none; }
     .doc-list li {
-      border-bottom: 1px solid var(--border);
-      padding: 1rem 0;
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
-      gap: 1rem;
+      border-bottom:1px solid var(--border); padding:1rem 0;
+      display:flex; justify-content:space-between; align-items:center; gap:1rem;
     }
-    .doc-list li:last-child { border-bottom: none; }
-
-    .doc-name { font-weight: 500; color: var(--text); }
-    .doc-desc { font-size: 13px; color: var(--muted); margin-top: 2px; }
-    .doc-status {
-      font-size: 12px;
-      font-weight: 600;
-      padding: 3px 10px;
-      border-radius: 20px;
-      white-space: nowrap;
-    }
-    .status-ready   { background: #E8F5E9; color: #2E7D32; border: 1px solid #C8E6C9; }
-    .status-draft   { background: #FFFDE7; color: #F57F17; border: 1px solid #FFF176; }
-    .status-pending { background: #E3F2FD; color: #1565C0; border: 1px solid #BBDEFB; }
+    .doc-list li:last-child { border-bottom:none; }
+    .doc-name { font-weight:500; }
+    .doc-desc { font-size:13px; color:var(--muted); margin-top:2px; }
+    .doc-status { font-size:12px; font-weight:600; padding:3px 10px; border-radius:20px; white-space:nowrap; }
+    .status-ready   { background:#E8F5E9; color:#2E7D32; border:1px solid #C8E6C9; }
+    .status-draft   { background:#FFFDE7; color:#F57F17; border:1px solid #FFF176; }
+    .status-pending { background:#E3F2FD; color:#1565C0; border:1px solid #BBDEFB; }
 
     /* ── NOTES ──────────────────────────────────────── */
     .note-item {
-      background: var(--surface);
-      border: 1px solid var(--border);
-      border-left: 3px solid var(--blue);
-      border-radius: 8px;
-      padding: 1.2rem 1.5rem;
-      margin-bottom: 1rem;
+      background:var(--surface); border:1px solid var(--border);
+      border-left:3px solid var(--blue); border-radius:8px;
+      padding:1.2rem 1.5rem; margin-bottom:1rem;
     }
-    .note-date { font-size: 12px; color: var(--muted); margin-bottom: 6px; font-weight: 600; }
-    .note-text { font-size: 14px; color: var(--text); }
-
-    /* ── FILTER BUTTONS ────────────────────────────── */
-    .filter-btn {
-      background: var(--surface);
-      border: 1px solid var(--border);
-      border-radius: 20px;
-      color: var(--muted);
-      cursor: pointer;
-      font-size: 13px;
-      font-weight: 500;
-      padding: 5px 14px;
-      transition: all .2s;
-    }
-    .filter-btn:hover  { border-color: var(--blue); color: var(--blue); }
-    .filter-btn.active { background: var(--blue); border-color: var(--blue); color: #fff; }
-
-    /* ── INTERVIEW TAGS ─────────────────────────────── */
-    .itag {
-      display: inline-block;
-      font-size: 11px;
-      font-weight: 600;
-      padding: 2px 8px;
-      border-radius: 4px;
-      margin-top: 6px;
-    }
-    .itag-done    { background: #E8F5E9; color: #2E7D32; }
-    .itag-pending { background: #FFF3E0; color: #E65100; }
+    .note-date { font-size:12px; color:var(--muted); margin-bottom:6px; font-weight:600; }
+    .note-text { font-size:14px; }
 
     /* ── RESPONSIVE ─────────────────────────────────── */
-    @media (max-width: 600px) {
-      header { height: auto; padding: 12px 1rem; flex-wrap: wrap; gap: 8px; }
-      nav { padding: 0 1rem; }
-      main { padding: 1.5rem 1rem 3rem; }
-      .hero { padding: 1.5rem; }
-      .hero h1 { font-size: 20px; }
-      .time-col { width: 58px; }
+    @media (max-width:600px) {
+      header { height:auto; padding:12px 1rem; flex-wrap:wrap; gap:8px; }
+      nav { padding:0 1rem; }
+      main { padding:1.5rem 1rem 3rem; }
+      .hero { padding:1.5rem; }
+      .hero h1 { font-size:20px; }
+      .time-col { width:58px; }
     }
   </style>
 </head>
@@ -418,9 +304,8 @@
 
 <main>
 
-  <!-- ── ОБЗОР ────────────────────────────────────── -->
+  <!-- ОБЗОР -->
   <section id="overview" class="section active">
-
     <div class="hero">
       <h1>Стратегическая сессия ГПМ Радио</h1>
       <p>Единое пространство для хранения материалов, расписания и профилей участников</p>
@@ -454,7 +339,7 @@
       <div class="quick-card" onclick="showTab('participants')">
         <div class="icon">👥</div>
         <div class="title">Участники</div>
-        <div class="desc">Профили и роли команды</div>
+        <div class="desc">Профили и тезисы интервью</div>
       </div>
       <div class="quick-card" onclick="showTab('docs')">
         <div class="icon">📄</div>
@@ -467,13 +352,11 @@
         <div class="desc">Рабочие записи и итоги</div>
       </div>
     </div>
-
   </section>
 
-  <!-- ── РАСПИСАНИЕ ────────────────────────────────── -->
+  <!-- РАСПИСАНИЕ -->
   <section id="schedule" class="section">
     <h2>Расписание сессии</h2>
-
     <div class="timeline">
 
       <div class="timeline-item">
@@ -600,194 +483,191 @@
     </div>
   </section>
 
-  <!-- ── УЧАСТНИКИ ─────────────────────────────────── -->
+  <!-- УЧАСТНИКИ -->
   <section id="participants" class="section">
     <h2>Участники</h2>
-
-    <div style="display:flex;gap:.5rem;margin-bottom:1.5rem;flex-wrap:wrap">
-      <button class="filter-btn active" onclick="filterParticipants('all', this)">Все <span class="filter-count"></span></button>
-      <button class="filter-btn" onclick="filterParticipants('SH', this)">SH</button>
-      <button class="filter-btn" onclick="filterParticipants('ГПМР', this)">ГПМР</button>
-      <button class="filter-btn" onclick="filterParticipants('Проведено', this)">✓ Интервью проведено</button>
-      <button class="filter-btn" onclick="filterParticipants('Предстоит', this)">⏳ Предстоит</button>
+    <div class="filter-bar">
+      <button class="fbtn active" onclick="filterP('all',this)">Все</button>
+      <button class="fbtn" onclick="filterP('SH',this)">SH</button>
+      <button class="fbtn" onclick="filterP('ГПМР',this)">ГПМР</button>
     </div>
 
     <div class="participants-grid" id="participants-grid">
 
-      <div class="participant-card" data-company="SH" data-interview="Проведено">
+      <div class="participant-card" data-id="gradova" data-company="SH" onclick="openModal('gradova')">
         <div class="avatar">МГ</div>
-        <div style="min-width:0">
+        <div>
           <div class="p-name">Марина Градова</div>
           <div class="p-role">Руководитель продаж</div>
-          <div class="p-dept">SH · 08.04</div>
-          <span class="itag itag-done">✓ Интервью</span>
+          <div class="p-dept">SH</div>
         </div>
+        <span class="hint">›</span>
       </div>
 
-      <div class="participant-card" data-company="SH" data-interview="Проведено">
+      <div class="participant-card" data-id="balyasnikova" data-company="SH" onclick="openModal('balyasnikova')">
         <div class="avatar">ЕБ</div>
-        <div style="min-width:0">
+        <div>
           <div class="p-name">Екатерина Балясникова</div>
           <div class="p-role">Групп-хед</div>
-          <div class="p-dept">SH · 08.04</div>
-          <span class="itag itag-done">✓ Интервью</span>
+          <div class="p-dept">SH</div>
         </div>
+        <span class="hint">›</span>
       </div>
 
-      <div class="participant-card" data-company="SH" data-interview="Проведено">
+      <div class="participant-card" data-id="belyaeva" data-company="SH" onclick="openModal('belyaeva')">
         <div class="avatar">ТБ</div>
-        <div style="min-width:0">
+        <div>
           <div class="p-name">Татьяна Беляева</div>
           <div class="p-role">Главный эксперт по маркетингу и коммуникациям</div>
-          <div class="p-dept">SH · 08.04</div>
-          <span class="itag itag-done">✓ Интервью</span>
+          <div class="p-dept">SH</div>
         </div>
+        <span class="hint">›</span>
       </div>
 
-      <div class="participant-card" data-company="SH" data-interview="Проведено">
+      <div class="participant-card" data-id="vorobyeva" data-company="SH" onclick="openModal('vorobyeva')">
         <div class="avatar">ОВ</div>
-        <div style="min-width:0">
+        <div>
           <div class="p-name">Ольга Воробьева</div>
           <div class="p-role">Руководитель группы прямых продаж</div>
-          <div class="p-dept">SH · 09.04</div>
-          <span class="itag itag-done">✓ Интервью</span>
+          <div class="p-dept">SH</div>
         </div>
+        <span class="hint">›</span>
       </div>
 
-      <div class="participant-card" data-company="SH" data-interview="Проведено">
+      <div class="participant-card" data-id="sotnikova" data-company="SH" onclick="openModal('sotnikova')">
         <div class="avatar">АС</div>
-        <div style="min-width:0">
+        <div>
           <div class="p-name">Анна Сотникова</div>
           <div class="p-role">Групп-хед</div>
-          <div class="p-dept">SH · 09.04</div>
-          <span class="itag itag-done">✓ Интервью</span>
+          <div class="p-dept">SH</div>
         </div>
+        <span class="hint">›</span>
       </div>
 
-      <div class="participant-card" data-company="SH" data-interview="Проведено">
+      <div class="participant-card" data-id="smirnova" data-company="SH" onclick="openModal('smirnova')">
         <div class="avatar">МС</div>
-        <div style="min-width:0">
+        <div>
           <div class="p-name">Мария Смирнова</div>
           <div class="p-role">Директор департамента продаж радио</div>
-          <div class="p-dept">SH · 09.04</div>
-          <span class="itag itag-done">✓ Интервью</span>
+          <div class="p-dept">SH</div>
         </div>
+        <span class="hint">›</span>
       </div>
 
-      <div class="participant-card" data-company="SH" data-interview="Проведено">
+      <div class="participant-card" data-id="pashchenko" data-company="SH" onclick="openModal('pashchenko')">
         <div class="avatar">ВП</div>
-        <div style="min-width:0">
+        <div>
           <div class="p-name">Виктор Пащенко</div>
           <div class="p-role">Групп-хед</div>
-          <div class="p-dept">SH · 10.04</div>
-          <span class="itag itag-done">✓ Интервью</span>
+          <div class="p-dept">SH</div>
         </div>
+        <span class="hint">›</span>
       </div>
 
-      <div class="participant-card" data-company="SH" data-interview="Проведено">
+      <div class="participant-card" data-id="chistyakova" data-company="SH" onclick="openModal('chistyakova')">
         <div class="avatar">ОЧ</div>
-        <div style="min-width:0">
+        <div>
           <div class="p-name">Ольга Чистякова</div>
           <div class="p-role">Менеджер по продажам</div>
-          <div class="p-dept">SH · 10.04</div>
-          <span class="itag itag-done">✓ Интервью</span>
+          <div class="p-dept">SH</div>
         </div>
+        <span class="hint">›</span>
       </div>
 
-      <div class="participant-card" data-company="SH" data-interview="Проведено">
+      <div class="participant-card" data-id="minaeva" data-company="SH" onclick="openModal('minaeva')">
         <div class="avatar">ОМ</div>
-        <div style="min-width:0">
+        <div>
           <div class="p-name">Оксана Минаева</div>
           <div class="p-role">Руководитель группы агентских продаж</div>
-          <div class="p-dept">SH · 10.04</div>
-          <span class="itag itag-done">✓ Интервью</span>
+          <div class="p-dept">SH</div>
         </div>
+        <span class="hint">›</span>
       </div>
 
-      <div class="participant-card" data-company="SH" data-interview="Проведено">
+      <div class="participant-card" data-id="shurmeleva" data-company="SH" onclick="openModal('shurmeleva')">
         <div class="avatar">ЮШ</div>
-        <div style="min-width:0">
+        <div>
           <div class="p-name">Юлия Шурмелева</div>
           <div class="p-role">Руководитель коммерческого направления</div>
-          <div class="p-dept">SH · 11.04</div>
-          <span class="itag itag-done">✓ Интервью</span>
+          <div class="p-dept">SH</div>
         </div>
+        <span class="hint">›</span>
       </div>
 
-      <div class="participant-card" data-company="ГПМР" data-interview="Проведено">
+      <div class="participant-card" data-id="krasnova" data-company="ГПМР" onclick="openModal('krasnova')">
         <div class="avatar" style="background:linear-gradient(135deg,#2563EB,#0ea5e9)">КК</div>
-        <div style="min-width:0">
+        <div>
           <div class="p-name">Ксения Краснова</div>
           <div class="p-role">Руководитель отдела спецпроектов (продукт)</div>
-          <div class="p-dept">ГПМР · 12.04</div>
-          <span class="itag itag-done">✓ Интервью</span>
+          <div class="p-dept">ГПМР</div>
         </div>
+        <span class="hint">›</span>
       </div>
 
-      <div class="participant-card" data-company="ГПМР" data-interview="Проведено">
+      <div class="participant-card" data-id="andryushova" data-company="ГПМР" onclick="openModal('andryushova')">
         <div class="avatar" style="background:linear-gradient(135deg,#2563EB,#0ea5e9)">ЮА</div>
-        <div style="min-width:0">
+        <div>
           <div class="p-name">Юля Андрюшова</div>
           <div class="p-role">Директор по PR, аналитике и спецпроектам</div>
-          <div class="p-dept">ГПМР · 14.04</div>
-          <span class="itag itag-done">✓ Интервью</span>
+          <div class="p-dept">ГПМР</div>
         </div>
+        <span class="hint">›</span>
       </div>
 
-      <div class="participant-card" data-company="ГПМР" data-interview="Проведено">
+      <div class="participant-card" data-id="amikashvili" data-company="ГПМР" onclick="openModal('amikashvili')">
         <div class="avatar" style="background:linear-gradient(135deg,#2563EB,#0ea5e9)">ВА</div>
-        <div style="min-width:0">
+        <div>
           <div class="p-name">Валентина Амикашвили</div>
           <div class="p-role">Рук. отдела коммерческих спецпроектов</div>
-          <div class="p-dept">ГПМР · 14.04</div>
-          <span class="itag itag-done">✓ Интервью</span>
+          <div class="p-dept">ГПМР</div>
         </div>
+        <span class="hint">›</span>
       </div>
 
-      <div class="participant-card" data-company="ГПМР" data-interview="Проведено">
+      <div class="participant-card" data-id="ipatova" data-company="ГПМР" onclick="openModal('ipatova')">
         <div class="avatar" style="background:linear-gradient(135deg,#2563EB,#0ea5e9)">ИИ</div>
-        <div style="min-width:0">
+        <div>
           <div class="p-name">Ирина Ипатова</div>
           <div class="p-role">Генеральный продюсер</div>
-          <div class="p-dept">ГПМР · 20.04</div>
-          <span class="itag itag-done">✓ Интервью</span>
+          <div class="p-dept">ГПМР</div>
         </div>
+        <span class="hint">›</span>
       </div>
 
-      <div class="participant-card" data-company="ГПМР" data-interview="Проведено">
+      <div class="participant-card" data-id="vlasova" data-company="ГПМР" onclick="openModal('vlasova')">
         <div class="avatar" style="background:linear-gradient(135deg,#2563EB,#0ea5e9)">АВ</div>
-        <div style="min-width:0">
+        <div>
           <div class="p-name">Анна Власова</div>
           <div class="p-role">Рук. направления офлайн-реализации</div>
-          <div class="p-dept">ГПМР · 15.04</div>
-          <span class="itag itag-done">✓ Интервью</span>
+          <div class="p-dept">ГПМР</div>
         </div>
+        <span class="hint">›</span>
       </div>
 
-      <div class="participant-card" data-company="ГПМР" data-interview="Предстоит">
+      <div class="participant-card" data-id="fink" data-company="ГПМР" onclick="openModal('fink')">
         <div class="avatar" style="background:linear-gradient(135deg,#2563EB,#0ea5e9)">ТФ</div>
-        <div style="min-width:0">
+        <div>
           <div class="p-name">Татьяна Финк</div>
           <div class="p-role">Директор по персоналу</div>
-          <div class="p-dept">ГПМР · 24.04</div>
-          <span class="itag itag-pending">⏳ Предстоит</span>
+          <div class="p-dept">ГПМР</div>
         </div>
+        <span class="hint">›</span>
       </div>
 
-      <div class="participant-card" data-company="ГПМР" data-interview="Предстоит">
+      <div class="participant-card" data-id="samukova" data-company="ГПМР" onclick="openModal('samukova')">
         <div class="avatar" style="background:linear-gradient(135deg,#2563EB,#0ea5e9)">ЕС</div>
-        <div style="min-width:0">
+        <div>
           <div class="p-name">Екатерина Самукова</div>
           <div class="p-role">—</div>
-          <div class="p-dept">ГПМР · 24.04</div>
-          <span class="itag itag-pending">⏳ Предстоит</span>
+          <div class="p-dept">ГПМР</div>
         </div>
+        <span class="hint">›</span>
       </div>
 
     </div>
   </section>
 
-  <!-- ── ДОКУМЕНТЫ ─────────────────────────────────── -->
+  <!-- ДОКУМЕНТЫ -->
   <section id="docs" class="section">
     <h2>Документы</h2>
     <div class="card">
@@ -831,7 +711,7 @@
     </div>
   </section>
 
-  <!-- ── ЗАМЕТКИ ───────────────────────────────────── -->
+  <!-- ЗАМЕТКИ -->
   <section id="notes" class="section">
     <h2>Заметки</h2>
     <div class="note-item">
@@ -843,28 +723,100 @@
 
 </main>
 
+<!-- MODAL -->
+<div class="modal-overlay" id="modal-overlay" onclick="closeModalOnOverlay(event)">
+  <div class="modal" id="modal">
+    <div class="modal-header">
+      <div class="modal-avatar" id="modal-avatar"></div>
+      <div>
+        <div class="modal-name" id="modal-name"></div>
+        <div class="modal-role" id="modal-role"></div>
+        <div class="modal-dept" id="modal-dept"></div>
+      </div>
+      <button class="modal-close" onclick="closeModal()">✕</button>
+    </div>
+    <div class="modal-body">
+      <h3>Тезисы интервью</h3>
+      <div id="modal-content"></div>
+    </div>
+  </div>
+</div>
+
 <script>
+  /* ── данные участников ── */
+  const people = {
+    gradova:      { name:'Марина Градова',       role:'Руководитель продаж',                          dept:'SH', initials:'МГ', bg:'linear-gradient(135deg,#005BB5,#0074D9)', theses:[] },
+    balyasnikova: { name:'Екатерина Балясникова', role:'Групп-хед',                                    dept:'SH', initials:'ЕБ', bg:'linear-gradient(135deg,#005BB5,#0074D9)', theses:[] },
+    belyaeva:     { name:'Татьяна Беляева',       role:'Главный эксперт по маркетингу и коммуникациям',dept:'SH', initials:'ТБ', bg:'linear-gradient(135deg,#005BB5,#0074D9)', theses:[] },
+    vorobyeva:    { name:'Ольга Воробьева',        role:'Руководитель группы прямых продаж',            dept:'SH', initials:'ОВ', bg:'linear-gradient(135deg,#005BB5,#0074D9)', theses:[] },
+    sotnikova:    { name:'Анна Сотникова',         role:'Групп-хед',                                    dept:'SH', initials:'АС', bg:'linear-gradient(135deg,#005BB5,#0074D9)', theses:[] },
+    smirnova:     { name:'Мария Смирнова',         role:'Директор департамента продаж радио',           dept:'SH', initials:'МС', bg:'linear-gradient(135deg,#005BB5,#0074D9)', theses:[] },
+    pashchenko:   { name:'Виктор Пащенко',         role:'Групп-хед',                                    dept:'SH', initials:'ВП', bg:'linear-gradient(135deg,#005BB5,#0074D9)', theses:[] },
+    chistyakova:  { name:'Ольга Чистякова',        role:'Менеджер по продажам',                         dept:'SH', initials:'ОЧ', bg:'linear-gradient(135deg,#005BB5,#0074D9)', theses:[] },
+    minaeva:      { name:'Оксана Минаева',         role:'Руководитель группы агентских продаж',         dept:'SH', initials:'ОМ', bg:'linear-gradient(135deg,#005BB5,#0074D9)', theses:[] },
+    shurmeleva:   { name:'Юлия Шурмелева',         role:'Руководитель коммерческого направления',       dept:'SH', initials:'ЮШ', bg:'linear-gradient(135deg,#005BB5,#0074D9)', theses:[] },
+    krasnova:     { name:'Ксения Краснова',         role:'Руководитель отдела спецпроектов (продукт)',   dept:'ГПМР', initials:'КК', bg:'linear-gradient(135deg,#2563EB,#0ea5e9)', theses:[] },
+    andryushova:  { name:'Юля Андрюшова',           role:'Директор по PR, аналитике и спецпроектам',    dept:'ГПМР', initials:'ЮА', bg:'linear-gradient(135deg,#2563EB,#0ea5e9)', theses:[] },
+    amikashvili:  { name:'Валентина Амикашвили',    role:'Рук. отдела коммерческих спецпроектов',       dept:'ГПМР', initials:'ВА', bg:'linear-gradient(135deg,#2563EB,#0ea5e9)', theses:[] },
+    ipatova:      { name:'Ирина Ипатова',           role:'Генеральный продюсер',                        dept:'ГПМР', initials:'ИИ', bg:'linear-gradient(135deg,#2563EB,#0ea5e9)', theses:[] },
+    vlasova:      { name:'Анна Власова',            role:'Рук. направления офлайн-реализации',          dept:'ГПМР', initials:'АВ', bg:'linear-gradient(135deg,#2563EB,#0ea5e9)', theses:[] },
+    fink:         { name:'Татьяна Финк',            role:'Директор по персоналу',                       dept:'ГПМР', initials:'ТФ', bg:'linear-gradient(135deg,#2563EB,#0ea5e9)', theses:[] },
+    samukova:     { name:'Екатерина Самукова',      role:'—',                                           dept:'ГПМР', initials:'ЕС', bg:'linear-gradient(135deg,#2563EB,#0ea5e9)', theses:[] },
+  };
+
+  /* ── табы ── */
   function showTab(id) {
     document.querySelectorAll('.section').forEach(s => s.classList.remove('active'));
     document.querySelectorAll('nav button').forEach(b => b.classList.remove('active'));
     document.getElementById(id).classList.add('active');
-    const tabs = ['overview','schedule','participants','docs','notes'];
-    document.querySelectorAll('nav button')[tabs.indexOf(id)].classList.add('active');
+    ['overview','schedule','participants','docs','notes'].forEach((t,i) =>
+      document.querySelectorAll('nav button')[i].classList.toggle('active', t===id));
   }
 
-  const cards = document.querySelectorAll('.participant-card');
-  document.getElementById('participants-count').textContent = cards.length;
-
-  function filterParticipants(filter, btn) {
-    document.querySelectorAll('.filter-btn').forEach(b => b.classList.remove('active'));
+  /* ── фильтр участников ── */
+  function filterP(val, btn) {
+    document.querySelectorAll('.fbtn').forEach(b => b.classList.remove('active'));
     btn.classList.add('active');
-    cards.forEach(card => {
-      const match = filter === 'all'
-        || card.dataset.company === filter
-        || card.dataset.interview === filter;
-      card.style.display = match ? '' : 'none';
+    document.querySelectorAll('.participant-card').forEach(c => {
+      c.style.display = (val==='all' || c.dataset.company===val) ? '' : 'none';
     });
   }
+
+  /* ── счётчик ── */
+  document.getElementById('participants-count').textContent =
+    document.querySelectorAll('.participant-card').length;
+
+  /* ── модальное окно ── */
+  function openModal(id) {
+    const p = people[id];
+    if (!p) return;
+    document.getElementById('modal-avatar').textContent = p.initials;
+    document.getElementById('modal-avatar').style.background = p.bg;
+    document.getElementById('modal-name').textContent = p.name;
+    document.getElementById('modal-role').textContent = p.role;
+    document.getElementById('modal-dept').textContent = p.dept;
+
+    const content = document.getElementById('modal-content');
+    if (p.theses.length) {
+      content.innerHTML = '<ul class="thesis-list">' +
+        p.theses.map(t => `<li>${t}</li>`).join('') + '</ul>';
+    } else {
+      content.innerHTML = '<p class="no-summary">Тезисы появятся после загрузки отчёта об интервью</p>';
+    }
+    document.getElementById('modal-overlay').classList.add('open');
+    document.body.style.overflow = 'hidden';
+  }
+
+  function closeModal() {
+    document.getElementById('modal-overlay').classList.remove('open');
+    document.body.style.overflow = '';
+  }
+
+  function closeModalOnOverlay(e) {
+    if (e.target === document.getElementById('modal-overlay')) closeModal();
+  }
+
+  document.addEventListener('keydown', e => { if (e.key==='Escape') closeModal(); });
 </script>
 
 </body>
