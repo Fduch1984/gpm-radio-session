@@ -359,6 +359,33 @@
     .note-date { font-size: 12px; color: var(--muted); margin-bottom: 6px; font-weight: 600; }
     .note-text { font-size: 14px; color: var(--text); }
 
+    /* ── FILTER BUTTONS ────────────────────────────── */
+    .filter-btn {
+      background: var(--surface);
+      border: 1px solid var(--border);
+      border-radius: 20px;
+      color: var(--muted);
+      cursor: pointer;
+      font-size: 13px;
+      font-weight: 500;
+      padding: 5px 14px;
+      transition: all .2s;
+    }
+    .filter-btn:hover  { border-color: var(--blue); color: var(--blue); }
+    .filter-btn.active { background: var(--blue); border-color: var(--blue); color: #fff; }
+
+    /* ── INTERVIEW TAGS ─────────────────────────────── */
+    .itag {
+      display: inline-block;
+      font-size: 11px;
+      font-weight: 600;
+      padding: 2px 8px;
+      border-radius: 4px;
+      margin-top: 6px;
+    }
+    .itag-done    { background: #E8F5E9; color: #2E7D32; }
+    .itag-pending { background: #FFF3E0; color: #E65100; }
+
     /* ── RESPONSIVE ─────────────────────────────────── */
     @media (max-width: 600px) {
       header { height: auto; padding: 12px 1rem; flex-wrap: wrap; gap: 8px; }
@@ -576,33 +603,184 @@
   <!-- ── УЧАСТНИКИ ─────────────────────────────────── -->
   <section id="participants" class="section">
     <h2>Участники</h2>
-    <p style="color:var(--muted);margin-bottom:1.5rem;font-size:14px">Добавьте ФИО, роли и данные участников — Claude внесёт правки по вашей команде.</p>
+
+    <div style="display:flex;gap:.5rem;margin-bottom:1.5rem;flex-wrap:wrap">
+      <button class="filter-btn active" onclick="filterParticipants('all', this)">Все <span class="filter-count"></span></button>
+      <button class="filter-btn" onclick="filterParticipants('SH', this)">SH</button>
+      <button class="filter-btn" onclick="filterParticipants('ГПМР', this)">ГПМР</button>
+      <button class="filter-btn" onclick="filterParticipants('Проведено', this)">✓ Интервью проведено</button>
+      <button class="filter-btn" onclick="filterParticipants('Предстоит', this)">⏳ Предстоит</button>
+    </div>
+
     <div class="participants-grid" id="participants-grid">
 
-      <div class="participant-card">
-        <div class="avatar">ИИ</div>
-        <div>
-          <div class="p-name">Имя Фамилия</div>
-          <div class="p-role">Модератор сессии</div>
-          <div class="p-dept">Управление стратегией</div>
+      <div class="participant-card" data-company="SH" data-interview="Проведено">
+        <div class="avatar">МГ</div>
+        <div style="min-width:0">
+          <div class="p-name">Марина Градова</div>
+          <div class="p-role">Руководитель продаж</div>
+          <div class="p-dept">SH · 08.04</div>
+          <span class="itag itag-done">✓ Интервью</span>
         </div>
       </div>
 
-      <div class="participant-card">
-        <div class="avatar">УЧ</div>
-        <div>
-          <div class="p-name">Участник 2</div>
-          <div class="p-role">Руководитель</div>
-          <div class="p-dept">— подразделение —</div>
+      <div class="participant-card" data-company="SH" data-interview="Проведено">
+        <div class="avatar">ЕБ</div>
+        <div style="min-width:0">
+          <div class="p-name">Екатерина Балясникова</div>
+          <div class="p-role">Групп-хед</div>
+          <div class="p-dept">SH · 08.04</div>
+          <span class="itag itag-done">✓ Интервью</span>
         </div>
       </div>
 
-      <div class="participant-card">
-        <div class="avatar">УЧ</div>
-        <div>
-          <div class="p-name">Участник 3</div>
-          <div class="p-role">Эксперт</div>
-          <div class="p-dept">— подразделение —</div>
+      <div class="participant-card" data-company="SH" data-interview="Проведено">
+        <div class="avatar">ТБ</div>
+        <div style="min-width:0">
+          <div class="p-name">Татьяна Беляева</div>
+          <div class="p-role">Главный эксперт по маркетингу и коммуникациям</div>
+          <div class="p-dept">SH · 08.04</div>
+          <span class="itag itag-done">✓ Интервью</span>
+        </div>
+      </div>
+
+      <div class="participant-card" data-company="SH" data-interview="Проведено">
+        <div class="avatar">ОВ</div>
+        <div style="min-width:0">
+          <div class="p-name">Ольга Воробьева</div>
+          <div class="p-role">Руководитель группы прямых продаж</div>
+          <div class="p-dept">SH · 09.04</div>
+          <span class="itag itag-done">✓ Интервью</span>
+        </div>
+      </div>
+
+      <div class="participant-card" data-company="SH" data-interview="Проведено">
+        <div class="avatar">АС</div>
+        <div style="min-width:0">
+          <div class="p-name">Анна Сотникова</div>
+          <div class="p-role">Групп-хед</div>
+          <div class="p-dept">SH · 09.04</div>
+          <span class="itag itag-done">✓ Интервью</span>
+        </div>
+      </div>
+
+      <div class="participant-card" data-company="SH" data-interview="Проведено">
+        <div class="avatar">МС</div>
+        <div style="min-width:0">
+          <div class="p-name">Мария Смирнова</div>
+          <div class="p-role">Директор департамента продаж радио</div>
+          <div class="p-dept">SH · 09.04</div>
+          <span class="itag itag-done">✓ Интервью</span>
+        </div>
+      </div>
+
+      <div class="participant-card" data-company="SH" data-interview="Проведено">
+        <div class="avatar">ВП</div>
+        <div style="min-width:0">
+          <div class="p-name">Виктор Пащенко</div>
+          <div class="p-role">Групп-хед</div>
+          <div class="p-dept">SH · 10.04</div>
+          <span class="itag itag-done">✓ Интервью</span>
+        </div>
+      </div>
+
+      <div class="participant-card" data-company="SH" data-interview="Проведено">
+        <div class="avatar">ОЧ</div>
+        <div style="min-width:0">
+          <div class="p-name">Ольга Чистякова</div>
+          <div class="p-role">Менеджер по продажам</div>
+          <div class="p-dept">SH · 10.04</div>
+          <span class="itag itag-done">✓ Интервью</span>
+        </div>
+      </div>
+
+      <div class="participant-card" data-company="SH" data-interview="Проведено">
+        <div class="avatar">ОМ</div>
+        <div style="min-width:0">
+          <div class="p-name">Оксана Минаева</div>
+          <div class="p-role">Руководитель группы агентских продаж</div>
+          <div class="p-dept">SH · 10.04</div>
+          <span class="itag itag-done">✓ Интервью</span>
+        </div>
+      </div>
+
+      <div class="participant-card" data-company="SH" data-interview="Проведено">
+        <div class="avatar">ЮШ</div>
+        <div style="min-width:0">
+          <div class="p-name">Юлия Шурмелева</div>
+          <div class="p-role">Руководитель коммерческого направления</div>
+          <div class="p-dept">SH · 11.04</div>
+          <span class="itag itag-done">✓ Интервью</span>
+        </div>
+      </div>
+
+      <div class="participant-card" data-company="ГПМР" data-interview="Проведено">
+        <div class="avatar" style="background:linear-gradient(135deg,#2563EB,#0ea5e9)">КК</div>
+        <div style="min-width:0">
+          <div class="p-name">Ксения Краснова</div>
+          <div class="p-role">Руководитель отдела спецпроектов (продукт)</div>
+          <div class="p-dept">ГПМР · 12.04</div>
+          <span class="itag itag-done">✓ Интервью</span>
+        </div>
+      </div>
+
+      <div class="participant-card" data-company="ГПМР" data-interview="Проведено">
+        <div class="avatar" style="background:linear-gradient(135deg,#2563EB,#0ea5e9)">ЮА</div>
+        <div style="min-width:0">
+          <div class="p-name">Юля Андрюшова</div>
+          <div class="p-role">Директор по PR, аналитике и спецпроектам</div>
+          <div class="p-dept">ГПМР · 14.04</div>
+          <span class="itag itag-done">✓ Интервью</span>
+        </div>
+      </div>
+
+      <div class="participant-card" data-company="ГПМР" data-interview="Проведено">
+        <div class="avatar" style="background:linear-gradient(135deg,#2563EB,#0ea5e9)">ВА</div>
+        <div style="min-width:0">
+          <div class="p-name">Валентина Амикашвили</div>
+          <div class="p-role">Рук. отдела коммерческих спецпроектов</div>
+          <div class="p-dept">ГПМР · 14.04</div>
+          <span class="itag itag-done">✓ Интервью</span>
+        </div>
+      </div>
+
+      <div class="participant-card" data-company="ГПМР" data-interview="Проведено">
+        <div class="avatar" style="background:linear-gradient(135deg,#2563EB,#0ea5e9)">ИИ</div>
+        <div style="min-width:0">
+          <div class="p-name">Ирина Ипатова</div>
+          <div class="p-role">Генеральный продюсер</div>
+          <div class="p-dept">ГПМР · 20.04</div>
+          <span class="itag itag-done">✓ Интервью</span>
+        </div>
+      </div>
+
+      <div class="participant-card" data-company="ГПМР" data-interview="Проведено">
+        <div class="avatar" style="background:linear-gradient(135deg,#2563EB,#0ea5e9)">АВ</div>
+        <div style="min-width:0">
+          <div class="p-name">Анна Власова</div>
+          <div class="p-role">Рук. направления офлайн-реализации</div>
+          <div class="p-dept">ГПМР · 15.04</div>
+          <span class="itag itag-done">✓ Интервью</span>
+        </div>
+      </div>
+
+      <div class="participant-card" data-company="ГПМР" data-interview="Предстоит">
+        <div class="avatar" style="background:linear-gradient(135deg,#2563EB,#0ea5e9)">ТФ</div>
+        <div style="min-width:0">
+          <div class="p-name">Татьяна Финк</div>
+          <div class="p-role">Директор по персоналу</div>
+          <div class="p-dept">ГПМР · 24.04</div>
+          <span class="itag itag-pending">⏳ Предстоит</span>
+        </div>
+      </div>
+
+      <div class="participant-card" data-company="ГПМР" data-interview="Предстоит">
+        <div class="avatar" style="background:linear-gradient(135deg,#2563EB,#0ea5e9)">ЕС</div>
+        <div style="min-width:0">
+          <div class="p-name">Екатерина Самукова</div>
+          <div class="p-role">—</div>
+          <div class="p-dept">ГПМР · 24.04</div>
+          <span class="itag itag-pending">⏳ Предстоит</span>
         </div>
       </div>
 
@@ -674,8 +852,19 @@
     document.querySelectorAll('nav button')[tabs.indexOf(id)].classList.add('active');
   }
 
-  document.getElementById('participants-count').textContent =
-    document.querySelectorAll('.participant-card').length;
+  const cards = document.querySelectorAll('.participant-card');
+  document.getElementById('participants-count').textContent = cards.length;
+
+  function filterParticipants(filter, btn) {
+    document.querySelectorAll('.filter-btn').forEach(b => b.classList.remove('active'));
+    btn.classList.add('active');
+    cards.forEach(card => {
+      const match = filter === 'all'
+        || card.dataset.company === filter
+        || card.dataset.interview === filter;
+      card.style.display = match ? '' : 'none';
+    });
+  }
 </script>
 
 </body>
