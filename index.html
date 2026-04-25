@@ -1,0 +1,598 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Стратегическая сессия · ГПМ Радио</title>
+  <style>
+    :root {
+      --red:    #D0021B;
+      --dark:   #111318;
+      --mid:    #1E2230;
+      --card:   #252A3A;
+      --border: #2E3450;
+      --text:   #E8EAF0;
+      --muted:  #8890A8;
+      --accent: #FF3C54;
+    }
+
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    body {
+      font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+      background: var(--dark);
+      color: var(--text);
+      line-height: 1.6;
+      min-height: 100vh;
+    }
+
+    /* ── HEADER ────────────────────────────────────── */
+    header {
+      background: linear-gradient(135deg, #0D0F18 0%, #1A0A10 50%, #0D0F18 100%);
+      border-bottom: 2px solid var(--red);
+      padding: 0 2rem;
+      position: sticky;
+      top: 0;
+      z-index: 100;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      height: 64px;
+    }
+
+    .logo {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      text-decoration: none;
+    }
+
+    .logo-badge {
+      background: var(--red);
+      color: #fff;
+      font-weight: 800;
+      font-size: 13px;
+      letter-spacing: 0.5px;
+      padding: 4px 10px;
+      border-radius: 4px;
+      line-height: 1.4;
+    }
+
+    .logo-title {
+      color: var(--text);
+      font-size: 16px;
+      font-weight: 600;
+    }
+
+    .header-date {
+      color: var(--muted);
+      font-size: 13px;
+    }
+
+    /* ── NAV TABS ───────────────────────────────────── */
+    nav {
+      background: var(--mid);
+      border-bottom: 1px solid var(--border);
+      display: flex;
+      gap: 0;
+      padding: 0 2rem;
+      overflow-x: auto;
+      scrollbar-width: none;
+    }
+    nav::-webkit-scrollbar { display: none; }
+
+    nav button {
+      background: none;
+      border: none;
+      border-bottom: 3px solid transparent;
+      color: var(--muted);
+      cursor: pointer;
+      font-size: 14px;
+      font-weight: 500;
+      padding: 14px 20px;
+      transition: color .2s, border-color .2s;
+      white-space: nowrap;
+    }
+
+    nav button:hover  { color: var(--text); }
+    nav button.active { color: #fff; border-bottom-color: var(--red); }
+
+    /* ── MAIN LAYOUT ────────────────────────────────── */
+    main { max-width: 1100px; margin: 0 auto; padding: 2.5rem 2rem 4rem; }
+
+    .section { display: none; }
+    .section.active { display: block; }
+
+    h2 {
+      font-size: 22px;
+      font-weight: 700;
+      margin-bottom: 1.5rem;
+      display: flex;
+      align-items: center;
+      gap: 10px;
+    }
+    h2::before {
+      content: '';
+      display: inline-block;
+      width: 4px;
+      height: 22px;
+      background: var(--red);
+      border-radius: 2px;
+    }
+
+    /* ── CARDS ──────────────────────────────────────── */
+    .card {
+      background: var(--card);
+      border: 1px solid var(--border);
+      border-radius: 10px;
+      padding: 1.5rem;
+      margin-bottom: 1rem;
+    }
+
+    /* ── HERO BANNER ────────────────────────────────── */
+    .hero {
+      background: linear-gradient(135deg, #1A0A10 0%, var(--mid) 100%);
+      border: 1px solid var(--border);
+      border-left: 4px solid var(--red);
+      border-radius: 10px;
+      padding: 2rem 2.5rem;
+      margin-bottom: 2rem;
+    }
+    .hero h1 { font-size: 28px; font-weight: 800; margin-bottom: 6px; }
+    .hero p  { color: var(--muted); font-size: 15px; }
+
+    .meta-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+      gap: 1rem;
+      margin-top: 1.5rem;
+    }
+    .meta-item { display: flex; flex-direction: column; gap: 4px; }
+    .meta-label { font-size: 11px; text-transform: uppercase; letter-spacing: 1px; color: var(--muted); }
+    .meta-value { font-size: 15px; font-weight: 600; }
+
+    /* ── SCHEDULE ───────────────────────────────────── */
+    .timeline { position: relative; }
+
+    .timeline-item {
+      display: flex;
+      gap: 1.5rem;
+      margin-bottom: 1.5px;
+    }
+
+    .time-col {
+      width: 80px;
+      flex-shrink: 0;
+      text-align: right;
+    }
+
+    .time-range {
+      font-size: 13px;
+      font-weight: 700;
+      color: var(--red);
+      padding-top: 1.2rem;
+      white-space: nowrap;
+    }
+
+    .timeline-body {
+      flex: 1;
+      border-left: 2px solid var(--border);
+      padding: 0 0 0 1.5rem;
+      position: relative;
+    }
+
+    .timeline-body::before {
+      content: '';
+      position: absolute;
+      left: -6px;
+      top: 1.45rem;
+      width: 10px;
+      height: 10px;
+      border-radius: 50%;
+      background: var(--border);
+    }
+
+    .timeline-item.highlight .timeline-body::before { background: var(--red); }
+    .timeline-item.highlight .event-card { border-left-color: var(--red); }
+
+    .event-card {
+      background: var(--card);
+      border: 1px solid var(--border);
+      border-left: 3px solid var(--border);
+      border-radius: 8px;
+      padding: 1rem 1.2rem;
+      margin-bottom: 1.5rem;
+    }
+
+    .event-title { font-weight: 600; font-size: 15px; margin-bottom: 4px; }
+    .event-meta  { font-size: 13px; color: var(--muted); }
+
+    .tag {
+      display: inline-block;
+      font-size: 11px;
+      font-weight: 600;
+      padding: 2px 8px;
+      border-radius: 4px;
+      margin-right: 4px;
+      margin-top: 6px;
+    }
+    .tag-break   { background: #1a2a1a; color: #4caf50; }
+    .tag-plenary { background: #1a1020; color: #ce93d8; }
+    .tag-group   { background: #0d1a2a; color: #64b5f6; }
+    .tag-dinner  { background: #2a1a0d; color: #ffb74d; }
+
+    /* ── PARTICIPANTS ───────────────────────────────── */
+    .participants-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+      gap: 1rem;
+    }
+
+    .participant-card {
+      background: var(--card);
+      border: 1px solid var(--border);
+      border-radius: 10px;
+      padding: 1.25rem 1.5rem;
+      display: flex;
+      gap: 1rem;
+      align-items: flex-start;
+      transition: border-color .2s, transform .15s;
+    }
+    .participant-card:hover {
+      border-color: var(--red);
+      transform: translateY(-2px);
+    }
+
+    .avatar {
+      width: 48px;
+      height: 48px;
+      border-radius: 50%;
+      background: linear-gradient(135deg, var(--red), #6a1a28);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 18px;
+      font-weight: 700;
+      flex-shrink: 0;
+      color: #fff;
+    }
+
+    .p-name  { font-weight: 700; font-size: 15px; margin-bottom: 2px; }
+    .p-role  { font-size: 12px; color: var(--red); font-weight: 600; margin-bottom: 4px; }
+    .p-dept  { font-size: 13px; color: var(--muted); }
+
+    /* ── DOCS ───────────────────────────────────────── */
+    .doc-list { list-style: none; }
+    .doc-list li {
+      border-bottom: 1px solid var(--border);
+      padding: 1rem 0;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      gap: 1rem;
+    }
+    .doc-list li:last-child { border-bottom: none; }
+
+    .doc-name { font-weight: 500; }
+    .doc-desc { font-size: 13px; color: var(--muted); margin-top: 2px; }
+    .doc-status {
+      font-size: 12px;
+      font-weight: 600;
+      padding: 3px 10px;
+      border-radius: 20px;
+      white-space: nowrap;
+    }
+    .status-ready   { background: #1a2a1a; color: #4caf50; }
+    .status-draft   { background: #2a2a0d; color: #ffd54f; }
+    .status-pending { background: #1a1a2a; color: #90caf9; }
+
+    /* ── NOTES ──────────────────────────────────────── */
+    .note-item {
+      background: var(--card);
+      border: 1px solid var(--border);
+      border-radius: 8px;
+      padding: 1.2rem 1.5rem;
+      margin-bottom: 1rem;
+    }
+    .note-date { font-size: 12px; color: var(--muted); margin-bottom: 6px; }
+    .note-text { font-size: 14px; }
+
+    /* ── RESPONSIVE ─────────────────────────────────── */
+    @media (max-width: 600px) {
+      header { height: auto; padding: 12px 1rem; flex-direction: column; align-items: flex-start; gap: 6px; }
+      nav { padding: 0 1rem; }
+      main { padding: 1.5rem 1rem 3rem; }
+      .hero { padding: 1.5rem; }
+      .hero h1 { font-size: 22px; }
+      .time-col { width: 60px; }
+    }
+  </style>
+</head>
+<body>
+
+<header>
+  <a class="logo" href="#">
+    <span class="logo-badge">ГПМ<br>Радио</span>
+    <span class="logo-title">Стратегическая сессия</span>
+  </a>
+  <span class="header-date">Материалы и расписание</span>
+</header>
+
+<nav>
+  <button class="active" onclick="showTab('overview')">Обзор</button>
+  <button onclick="showTab('schedule')">Расписание</button>
+  <button onclick="showTab('participants')">Участники</button>
+  <button onclick="showTab('docs')">Документы</button>
+  <button onclick="showTab('notes')">Заметки</button>
+</nav>
+
+<main>
+
+  <!-- ── ОБЗОР ────────────────────────────────────── -->
+  <section id="overview" class="section active">
+
+    <div class="hero">
+      <h1>Стратегическая сессия ГПМ Радио</h1>
+      <p>Единое пространство для хранения материалов, расписания и профилей участников</p>
+      <div class="meta-grid">
+        <div class="meta-item">
+          <span class="meta-label">Дата</span>
+          <span class="meta-value" id="session-date">— не указана —</span>
+        </div>
+        <div class="meta-item">
+          <span class="meta-label">Место</span>
+          <span class="meta-value" id="session-location">— не указано —</span>
+        </div>
+        <div class="meta-item">
+          <span class="meta-label">Участников</span>
+          <span class="meta-value" id="participants-count">0</span>
+        </div>
+        <div class="meta-item">
+          <span class="meta-label">Статус</span>
+          <span class="meta-value" style="color:var(--red)">Подготовка</span>
+        </div>
+      </div>
+    </div>
+
+    <h2>Быстрый доступ</h2>
+    <div style="display:grid;grid-template-columns:repeat(auto-fill,minmax(240px,1fr));gap:1rem">
+      <div class="card" style="cursor:pointer;transition:border-color .2s" onmouseenter="this.style.borderColor='var(--red)'" onmouseleave="this.style.borderColor='var(--border)'" onclick="showTab('schedule')">
+        <div style="font-size:28px;margin-bottom:8px">🗓</div>
+        <div style="font-weight:700;margin-bottom:4px">Расписание</div>
+        <div style="font-size:13px;color:var(--muted)">Программа сессии по блокам</div>
+      </div>
+      <div class="card" style="cursor:pointer;transition:border-color .2s" onmouseenter="this.style.borderColor='var(--red)'" onmouseleave="this.style.borderColor='var(--border)'" onclick="showTab('participants')">
+        <div style="font-size:28px;margin-bottom:8px">👥</div>
+        <div style="font-weight:700;margin-bottom:4px">Участники</div>
+        <div style="font-size:13px;color:var(--muted)">Профили и роли команды</div>
+      </div>
+      <div class="card" style="cursor:pointer;transition:border-color .2s" onmouseenter="this.style.borderColor='var(--red)'" onmouseleave="this.style.borderColor='var(--border)'" onclick="showTab('docs')">
+        <div style="font-size:28px;margin-bottom:8px">📄</div>
+        <div style="font-weight:700;margin-bottom:4px">Документы</div>
+        <div style="font-size:13px;color:var(--muted)">Материалы и презентации</div>
+      </div>
+      <div class="card" style="cursor:pointer;transition:border-color .2s" onmouseenter="this.style.borderColor='var(--red)'" onmouseleave="this.style.borderColor='var(--border)'" onclick="showTab('notes')">
+        <div style="font-size:28px;margin-bottom:8px">📝</div>
+        <div style="font-weight:700;margin-bottom:4px">Заметки</div>
+        <div style="font-size:13px;color:var(--muted)">Рабочие записи и итоги</div>
+      </div>
+    </div>
+
+  </section>
+
+  <!-- ── РАСПИСАНИЕ ────────────────────────────────── -->
+  <section id="schedule" class="section">
+    <h2>Расписание сессии</h2>
+
+    <div class="timeline">
+
+      <div class="timeline-item">
+        <div class="time-col"><div class="time-range">09:00</div></div>
+        <div class="timeline-body">
+          <div class="event-card">
+            <div class="event-title">Регистрация и приветственный кофе</div>
+            <div class="event-meta">Встреча участников, неформальное общение</div>
+            <span class="tag tag-break">☕ Пауза</span>
+          </div>
+        </div>
+      </div>
+
+      <div class="timeline-item highlight">
+        <div class="time-col"><div class="time-range">10:00</div></div>
+        <div class="timeline-body">
+          <div class="event-card">
+            <div class="event-title">Открытие сессии</div>
+            <div class="event-meta">Вступительное слово руководства. Цели и формат дня.</div>
+            <span class="tag tag-plenary">⬛ Пленарная</span>
+          </div>
+        </div>
+      </div>
+
+      <div class="timeline-item highlight">
+        <div class="time-col"><div class="time-range">10:30</div></div>
+        <div class="timeline-body">
+          <div class="event-card">
+            <div class="event-title">Блок 1 · Стратегический контекст</div>
+            <div class="event-meta">Анализ рынка, текущее положение ГПМ Радио, вызовы и возможности</div>
+            <span class="tag tag-plenary">⬛ Пленарная</span>
+          </div>
+        </div>
+      </div>
+
+      <div class="timeline-item">
+        <div class="time-col"><div class="time-range">12:00</div></div>
+        <div class="timeline-body">
+          <div class="event-card">
+            <div class="event-title">Перерыв на обед</div>
+            <div class="event-meta">— </div>
+            <span class="tag tag-dinner">🍽 Обед</span>
+          </div>
+        </div>
+      </div>
+
+      <div class="timeline-item highlight">
+        <div class="time-col"><div class="time-range">13:00</div></div>
+        <div class="timeline-body">
+          <div class="event-card">
+            <div class="event-title">Блок 2 · Групповая работа</div>
+            <div class="event-meta">Разделение на рабочие группы, проработка ключевых тем</div>
+            <span class="tag tag-group">◆ Группы</span>
+          </div>
+        </div>
+      </div>
+
+      <div class="timeline-item highlight">
+        <div class="time-col"><div class="time-range">15:00</div></div>
+        <div class="timeline-body">
+          <div class="event-card">
+            <div class="event-title">Блок 3 · Презентация результатов</div>
+            <div class="event-meta">Каждая группа представляет выводы и предложения</div>
+            <span class="tag tag-plenary">⬛ Пленарная</span>
+          </div>
+        </div>
+      </div>
+
+      <div class="timeline-item">
+        <div class="time-col"><div class="time-range">16:30</div></div>
+        <div class="timeline-body">
+          <div class="event-card">
+            <div class="event-title">Кофе-пауза</div>
+            <div class="event-meta">—</div>
+            <span class="tag tag-break">☕ Пауза</span>
+          </div>
+        </div>
+      </div>
+
+      <div class="timeline-item highlight">
+        <div class="time-col"><div class="time-range">17:00</div></div>
+        <div class="timeline-body">
+          <div class="event-card">
+            <div class="event-title">Закрытие сессии</div>
+            <div class="event-meta">Итоги, следующие шаги, договорённости</div>
+            <span class="tag tag-plenary">⬛ Пленарная</span>
+          </div>
+        </div>
+      </div>
+
+      <div class="timeline-item">
+        <div class="time-col"><div class="time-range">18:00</div></div>
+        <div class="timeline-body">
+          <div class="event-card">
+            <div class="event-title">Неформальный ужин</div>
+            <div class="event-meta">—</div>
+            <span class="tag tag-dinner">🍽 Ужин</span>
+          </div>
+        </div>
+      </div>
+
+    </div>
+  </section>
+
+  <!-- ── УЧАСТНИКИ ─────────────────────────────────── -->
+  <section id="participants" class="section">
+    <h2>Участники</h2>
+    <p style="color:var(--muted);margin-bottom:1.5rem;font-size:14px">Добавьте ФИО, роли и данные участников — Claude внесёт правки по вашей команде.</p>
+    <div class="participants-grid" id="participants-grid">
+
+      <div class="participant-card">
+        <div class="avatar">ИИ</div>
+        <div>
+          <div class="p-name">Имя Фамилия</div>
+          <div class="p-role">Модератор сессии</div>
+          <div class="p-dept">Управление стратегией</div>
+        </div>
+      </div>
+
+      <div class="participant-card">
+        <div class="avatar">УЧ</div>
+        <div>
+          <div class="p-name">Участник 2</div>
+          <div class="p-role">Руководитель</div>
+          <div class="p-dept">— подразделение —</div>
+        </div>
+      </div>
+
+      <div class="participant-card">
+        <div class="avatar">УЧ</div>
+        <div>
+          <div class="p-name">Участник 3</div>
+          <div class="p-role">Эксперт</div>
+          <div class="p-dept">— подразделение —</div>
+        </div>
+      </div>
+
+    </div>
+  </section>
+
+  <!-- ── ДОКУМЕНТЫ ─────────────────────────────────── -->
+  <section id="docs" class="section">
+    <h2>Документы</h2>
+    <div class="card">
+      <ul class="doc-list">
+        <li>
+          <div>
+            <div class="doc-name">Программа сессии</div>
+            <div class="doc-desc">Детальная повестка дня с форматами блоков</div>
+          </div>
+          <span class="doc-status status-draft">Черновик</span>
+        </li>
+        <li>
+          <div>
+            <div class="doc-name">Аналитический обзор рынка</div>
+            <div class="doc-desc">Данные по рынку радио и цифровых медиа</div>
+          </div>
+          <span class="doc-status status-pending">Ожидается</span>
+        </li>
+        <li>
+          <div>
+            <div class="doc-name">Список участников</div>
+            <div class="doc-desc">ФИО, роли, контакты</div>
+          </div>
+          <span class="doc-status status-draft">Черновик</span>
+        </li>
+        <li>
+          <div>
+            <div class="doc-name">Шаблон рабочей группы</div>
+            <div class="doc-desc">Форма для фиксации итогов групповой работы</div>
+          </div>
+          <span class="doc-status status-pending">Ожидается</span>
+        </li>
+        <li>
+          <div>
+            <div class="doc-name">Итоговый протокол</div>
+            <div class="doc-desc">Договорённости и следующие шаги</div>
+          </div>
+          <span class="doc-status status-pending">Ожидается</span>
+        </li>
+      </ul>
+    </div>
+  </section>
+
+  <!-- ── ЗАМЕТКИ ───────────────────────────────────── -->
+  <section id="notes" class="section">
+    <h2>Заметки</h2>
+    <div class="note-item">
+      <div class="note-date">25 апреля 2026 · Инициализация</div>
+      <div class="note-text">Сайт создан для хранения материалов стратегической сессии ГПМ Радио. Claude имеет доступ к файлу и может вносить правки: обновлять расписание, добавлять участников, менять статусы документов.</div>
+    </div>
+    <p style="color:var(--muted);font-size:13px">Новые заметки появятся здесь по мере работы над сессией.</p>
+  </section>
+
+</main>
+
+<script>
+  function showTab(id) {
+    document.querySelectorAll('.section').forEach(s => s.classList.remove('active'));
+    document.querySelectorAll('nav button').forEach(b => b.classList.remove('active'));
+    document.getElementById(id).classList.add('active');
+    const tabs = ['overview','schedule','participants','docs','notes'];
+    document.querySelectorAll('nav button')[tabs.indexOf(id)].classList.add('active');
+  }
+
+  // Обновить счётчик участников
+  document.getElementById('participants-count').textContent =
+    document.querySelectorAll('.participant-card').length;
+</script>
+
+</body>
+</html>
