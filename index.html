@@ -6,21 +6,23 @@
   <title>Стратегическая сессия · ГПМ Радио</title>
   <style>
     :root {
-      --red:    #D0021B;
-      --dark:   #111318;
-      --mid:    #1E2230;
-      --card:   #252A3A;
-      --border: #2E3450;
-      --text:   #E8EAF0;
-      --muted:  #8890A8;
-      --accent: #FF3C54;
+      --blue:    #005BB5;
+      --blue-dk: #003F80;
+      --blue-lt: #E8F0FB;
+      --blue-md: #C5D9F5;
+      --bg:      #F4F7FC;
+      --surface: #FFFFFF;
+      --border:  #D6E2F0;
+      --text:    #1A2533;
+      --muted:   #5E748A;
+      --accent:  #0074D9;
     }
 
     *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
 
     body {
       font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
-      background: var(--dark);
+      background: var(--bg);
       color: var(--text);
       line-height: 1.6;
       min-height: 100vh;
@@ -28,8 +30,8 @@
 
     /* ── HEADER ────────────────────────────────────── */
     header {
-      background: linear-gradient(135deg, #0D0F18 0%, #1A0A10 50%, #0D0F18 100%);
-      border-bottom: 2px solid var(--red);
+      background: #fff;
+      border-bottom: 3px solid var(--blue);
       padding: 0 2rem;
       position: sticky;
       top: 0;
@@ -37,44 +39,47 @@
       display: flex;
       align-items: center;
       justify-content: space-between;
-      height: 64px;
+      height: 68px;
+      box-shadow: 0 2px 8px rgba(0,91,181,.08);
     }
 
     .logo {
       display: flex;
       align-items: center;
-      gap: 12px;
+      gap: 16px;
       text-decoration: none;
     }
 
-    .logo-badge {
-      background: var(--red);
-      color: #fff;
-      font-weight: 800;
-      font-size: 13px;
-      letter-spacing: 0.5px;
-      padding: 4px 10px;
-      border-radius: 4px;
-      line-height: 1.4;
+    /* ── GPM RADIO LOGO SVG ─────────────────────────── */
+    .logo-svg { height: 36px; width: auto; }
+
+    .logo-divider {
+      width: 1px;
+      height: 28px;
+      background: var(--border);
     }
 
     .logo-title {
       color: var(--text);
-      font-size: 16px;
+      font-size: 15px;
       font-weight: 600;
+      letter-spacing: -0.2px;
     }
 
     .header-date {
       color: var(--muted);
       font-size: 13px;
+      background: var(--blue-lt);
+      padding: 4px 12px;
+      border-radius: 20px;
+      border: 1px solid var(--blue-md);
     }
 
     /* ── NAV TABS ───────────────────────────────────── */
     nav {
-      background: var(--mid);
+      background: #fff;
       border-bottom: 1px solid var(--border);
       display: flex;
-      gap: 0;
       padding: 0 2rem;
       overflow-x: auto;
       scrollbar-width: none;
@@ -94,8 +99,8 @@
       white-space: nowrap;
     }
 
-    nav button:hover  { color: var(--text); }
-    nav button.active { color: #fff; border-bottom-color: var(--red); }
+    nav button:hover  { color: var(--blue); }
+    nav button.active { color: var(--blue); border-bottom-color: var(--blue); font-weight: 600; }
 
     /* ── MAIN LAYOUT ────────────────────────────────── */
     main { max-width: 1100px; margin: 0 auto; padding: 2.5rem 2rem 4rem; }
@@ -104,9 +109,10 @@
     .section.active { display: block; }
 
     h2 {
-      font-size: 22px;
+      font-size: 20px;
       font-weight: 700;
       margin-bottom: 1.5rem;
+      color: var(--text);
       display: flex;
       align-items: center;
       gap: 10px;
@@ -115,14 +121,14 @@
       content: '';
       display: inline-block;
       width: 4px;
-      height: 22px;
-      background: var(--red);
+      height: 20px;
+      background: var(--blue);
       border-radius: 2px;
     }
 
     /* ── CARDS ──────────────────────────────────────── */
     .card {
-      background: var(--card);
+      background: var(--surface);
       border: 1px solid var(--border);
       border-radius: 10px;
       padding: 1.5rem;
@@ -131,33 +137,81 @@
 
     /* ── HERO BANNER ────────────────────────────────── */
     .hero {
-      background: linear-gradient(135deg, #1A0A10 0%, var(--mid) 100%);
-      border: 1px solid var(--border);
-      border-left: 4px solid var(--red);
-      border-radius: 10px;
-      padding: 2rem 2.5rem;
+      background: linear-gradient(135deg, var(--blue-dk) 0%, var(--blue) 60%, #1a7fd4 100%);
+      border-radius: 12px;
+      padding: 2.2rem 2.5rem;
       margin-bottom: 2rem;
+      color: #fff;
+      position: relative;
+      overflow: hidden;
     }
-    .hero h1 { font-size: 28px; font-weight: 800; margin-bottom: 6px; }
-    .hero p  { color: var(--muted); font-size: 15px; }
+    .hero::after {
+      content: '';
+      position: absolute;
+      right: -40px;
+      top: -40px;
+      width: 200px;
+      height: 200px;
+      border-radius: 50%;
+      background: rgba(255,255,255,.06);
+    }
+    .hero::before {
+      content: '';
+      position: absolute;
+      right: 60px;
+      bottom: -60px;
+      width: 280px;
+      height: 280px;
+      border-radius: 50%;
+      background: rgba(255,255,255,.04);
+    }
+    .hero h1 { font-size: 26px; font-weight: 800; margin-bottom: 6px; position: relative; }
+    .hero p  { color: rgba(255,255,255,.75); font-size: 15px; position: relative; }
 
     .meta-grid {
       display: grid;
-      grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+      grid-template-columns: repeat(auto-fill, minmax(190px, 1fr));
       gap: 1rem;
-      margin-top: 1.5rem;
+      margin-top: 1.8rem;
+      position: relative;
     }
-    .meta-item { display: flex; flex-direction: column; gap: 4px; }
-    .meta-label { font-size: 11px; text-transform: uppercase; letter-spacing: 1px; color: var(--muted); }
-    .meta-value { font-size: 15px; font-weight: 600; }
+    .meta-item {
+      background: rgba(255,255,255,.12);
+      border: 1px solid rgba(255,255,255,.18);
+      border-radius: 8px;
+      padding: .8rem 1rem;
+    }
+    .meta-label { font-size: 11px; text-transform: uppercase; letter-spacing: 1px; color: rgba(255,255,255,.6); margin-bottom: 4px; }
+    .meta-value { font-size: 15px; font-weight: 700; color: #fff; }
+
+    /* ── QUICK ACCESS ───────────────────────────────── */
+    .quick-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(230px, 1fr));
+      gap: 1rem;
+    }
+
+    .quick-card {
+      background: var(--surface);
+      border: 1px solid var(--border);
+      border-radius: 10px;
+      padding: 1.4rem 1.5rem;
+      cursor: pointer;
+      transition: border-color .2s, box-shadow .2s, transform .15s;
+    }
+    .quick-card:hover {
+      border-color: var(--blue);
+      box-shadow: 0 4px 16px rgba(0,91,181,.12);
+      transform: translateY(-2px);
+    }
+    .quick-card .icon { font-size: 26px; margin-bottom: 10px; }
+    .quick-card .title { font-weight: 700; font-size: 15px; margin-bottom: 4px; color: var(--text); }
+    .quick-card .desc  { font-size: 13px; color: var(--muted); }
 
     /* ── SCHEDULE ───────────────────────────────────── */
-    .timeline { position: relative; }
-
     .timeline-item {
       display: flex;
       gap: 1.5rem;
-      margin-bottom: 1.5px;
     }
 
     .time-col {
@@ -169,7 +223,7 @@
     .time-range {
       font-size: 13px;
       font-weight: 700;
-      color: var(--red);
+      color: var(--blue);
       padding-top: 1.2rem;
       white-space: nowrap;
     }
@@ -190,21 +244,27 @@
       height: 10px;
       border-radius: 50%;
       background: var(--border);
+      border: 2px solid #fff;
     }
 
-    .timeline-item.highlight .timeline-body::before { background: var(--red); }
-    .timeline-item.highlight .event-card { border-left-color: var(--red); }
+    .timeline-item.highlight .timeline-body::before {
+      background: var(--blue);
+      border-color: var(--blue-lt);
+    }
+    .timeline-item.highlight .event-card { border-left-color: var(--blue); }
 
     .event-card {
-      background: var(--card);
+      background: var(--surface);
       border: 1px solid var(--border);
       border-left: 3px solid var(--border);
       border-radius: 8px;
       padding: 1rem 1.2rem;
       margin-bottom: 1.5rem;
+      transition: box-shadow .15s;
     }
+    .event-card:hover { box-shadow: 0 2px 10px rgba(0,91,181,.08); }
 
-    .event-title { font-weight: 600; font-size: 15px; margin-bottom: 4px; }
+    .event-title { font-weight: 600; font-size: 15px; margin-bottom: 4px; color: var(--text); }
     .event-meta  { font-size: 13px; color: var(--muted); }
 
     .tag {
@@ -216,10 +276,10 @@
       margin-right: 4px;
       margin-top: 6px;
     }
-    .tag-break   { background: #1a2a1a; color: #4caf50; }
-    .tag-plenary { background: #1a1020; color: #ce93d8; }
-    .tag-group   { background: #0d1a2a; color: #64b5f6; }
-    .tag-dinner  { background: #2a1a0d; color: #ffb74d; }
+    .tag-break   { background: #E8F5E9; color: #2E7D32; }
+    .tag-plenary { background: #EDE7F6; color: #512DA8; }
+    .tag-group   { background: #E3F2FD; color: #1565C0; }
+    .tag-dinner  { background: #FFF3E0; color: #E65100; }
 
     /* ── PARTICIPANTS ───────────────────────────────── */
     .participants-grid {
@@ -229,17 +289,18 @@
     }
 
     .participant-card {
-      background: var(--card);
+      background: var(--surface);
       border: 1px solid var(--border);
       border-radius: 10px;
       padding: 1.25rem 1.5rem;
       display: flex;
       gap: 1rem;
       align-items: flex-start;
-      transition: border-color .2s, transform .15s;
+      transition: border-color .2s, box-shadow .2s, transform .15s;
     }
     .participant-card:hover {
-      border-color: var(--red);
+      border-color: var(--blue);
+      box-shadow: 0 4px 14px rgba(0,91,181,.1);
       transform: translateY(-2px);
     }
 
@@ -247,18 +308,18 @@
       width: 48px;
       height: 48px;
       border-radius: 50%;
-      background: linear-gradient(135deg, var(--red), #6a1a28);
+      background: linear-gradient(135deg, var(--blue), var(--accent));
       display: flex;
       align-items: center;
       justify-content: center;
-      font-size: 18px;
+      font-size: 16px;
       font-weight: 700;
       flex-shrink: 0;
       color: #fff;
     }
 
-    .p-name  { font-weight: 700; font-size: 15px; margin-bottom: 2px; }
-    .p-role  { font-size: 12px; color: var(--red); font-weight: 600; margin-bottom: 4px; }
+    .p-name  { font-weight: 700; font-size: 15px; margin-bottom: 2px; color: var(--text); }
+    .p-role  { font-size: 12px; color: var(--blue); font-weight: 600; margin-bottom: 4px; }
     .p-dept  { font-size: 13px; color: var(--muted); }
 
     /* ── DOCS ───────────────────────────────────────── */
@@ -273,7 +334,7 @@
     }
     .doc-list li:last-child { border-bottom: none; }
 
-    .doc-name { font-weight: 500; }
+    .doc-name { font-weight: 500; color: var(--text); }
     .doc-desc { font-size: 13px; color: var(--muted); margin-top: 2px; }
     .doc-status {
       font-size: 12px;
@@ -282,29 +343,30 @@
       border-radius: 20px;
       white-space: nowrap;
     }
-    .status-ready   { background: #1a2a1a; color: #4caf50; }
-    .status-draft   { background: #2a2a0d; color: #ffd54f; }
-    .status-pending { background: #1a1a2a; color: #90caf9; }
+    .status-ready   { background: #E8F5E9; color: #2E7D32; border: 1px solid #C8E6C9; }
+    .status-draft   { background: #FFFDE7; color: #F57F17; border: 1px solid #FFF176; }
+    .status-pending { background: #E3F2FD; color: #1565C0; border: 1px solid #BBDEFB; }
 
     /* ── NOTES ──────────────────────────────────────── */
     .note-item {
-      background: var(--card);
+      background: var(--surface);
       border: 1px solid var(--border);
+      border-left: 3px solid var(--blue);
       border-radius: 8px;
       padding: 1.2rem 1.5rem;
       margin-bottom: 1rem;
     }
-    .note-date { font-size: 12px; color: var(--muted); margin-bottom: 6px; }
-    .note-text { font-size: 14px; }
+    .note-date { font-size: 12px; color: var(--muted); margin-bottom: 6px; font-weight: 600; }
+    .note-text { font-size: 14px; color: var(--text); }
 
     /* ── RESPONSIVE ─────────────────────────────────── */
     @media (max-width: 600px) {
-      header { height: auto; padding: 12px 1rem; flex-direction: column; align-items: flex-start; gap: 6px; }
+      header { height: auto; padding: 12px 1rem; flex-wrap: wrap; gap: 8px; }
       nav { padding: 0 1rem; }
       main { padding: 1.5rem 1rem 3rem; }
       .hero { padding: 1.5rem; }
-      .hero h1 { font-size: 22px; }
-      .time-col { width: 60px; }
+      .hero h1 { font-size: 20px; }
+      .time-col { width: 58px; }
     }
   </style>
 </head>
@@ -312,7 +374,26 @@
 
 <header>
   <a class="logo" href="#">
-    <span class="logo-badge">ГПМ<br>Радио</span>
+    <!-- ГПМ Радио logo (SVG) -->
+    <svg class="logo-svg" viewBox="0 0 180 48" fill="none" xmlns="http://www.w3.org/2000/svg" aria-label="ГПМ Радио">
+      <!-- Circle icon -->
+      <circle cx="24" cy="24" r="23" fill="#005BB5"/>
+      <!-- Radio waves -->
+      <path d="M14 24 C14 18.48 18.48 14 24 14" stroke="white" stroke-width="2.8" stroke-linecap="round" fill="none"/>
+      <path d="M34 24 C34 18.48 29.52 14 24 14" stroke="white" stroke-width="2.8" stroke-linecap="round" fill="none"/>
+      <path d="M9 24 C9 15.72 15.72 9 24 9" stroke="white" stroke-width="2.8" stroke-linecap="round" fill="none"/>
+      <path d="M39 24 C39 15.72 32.28 9 24 9" stroke="white" stroke-width="2.8" stroke-linecap="round" fill="none"/>
+      <!-- Center dot -->
+      <circle cx="24" cy="24" r="3.5" fill="white"/>
+      <!-- Bottom stem -->
+      <line x1="24" y1="27.5" x2="24" y2="36" stroke="white" stroke-width="2.8" stroke-linecap="round"/>
+      <line x1="18" y1="36" x2="30" y2="36" stroke="white" stroke-width="2.8" stroke-linecap="round"/>
+
+      <!-- GPM RADIO text -->
+      <text x="56" y="19" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif" font-size="13" font-weight="800" fill="#005BB5" letter-spacing="0.5">ГПМ</text>
+      <text x="56" y="36" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif" font-size="13" font-weight="800" fill="#005BB5" letter-spacing="0.5">РАДИО</text>
+    </svg>
+    <div class="logo-divider"></div>
     <span class="logo-title">Стратегическая сессия</span>
   </a>
   <span class="header-date">Материалы и расписание</span>
@@ -336,45 +417,45 @@
       <p>Единое пространство для хранения материалов, расписания и профилей участников</p>
       <div class="meta-grid">
         <div class="meta-item">
-          <span class="meta-label">Дата</span>
-          <span class="meta-value" id="session-date">— не указана —</span>
+          <div class="meta-label">Дата</div>
+          <div class="meta-value" id="session-date">— не указана —</div>
         </div>
         <div class="meta-item">
-          <span class="meta-label">Место</span>
-          <span class="meta-value" id="session-location">— не указано —</span>
+          <div class="meta-label">Место</div>
+          <div class="meta-value" id="session-location">— не указано —</div>
         </div>
         <div class="meta-item">
-          <span class="meta-label">Участников</span>
-          <span class="meta-value" id="participants-count">0</span>
+          <div class="meta-label">Участников</div>
+          <div class="meta-value" id="participants-count">0</div>
         </div>
         <div class="meta-item">
-          <span class="meta-label">Статус</span>
-          <span class="meta-value" style="color:var(--red)">Подготовка</span>
+          <div class="meta-label">Статус</div>
+          <div class="meta-value">Подготовка</div>
         </div>
       </div>
     </div>
 
     <h2>Быстрый доступ</h2>
-    <div style="display:grid;grid-template-columns:repeat(auto-fill,minmax(240px,1fr));gap:1rem">
-      <div class="card" style="cursor:pointer;transition:border-color .2s" onmouseenter="this.style.borderColor='var(--red)'" onmouseleave="this.style.borderColor='var(--border)'" onclick="showTab('schedule')">
-        <div style="font-size:28px;margin-bottom:8px">🗓</div>
-        <div style="font-weight:700;margin-bottom:4px">Расписание</div>
-        <div style="font-size:13px;color:var(--muted)">Программа сессии по блокам</div>
+    <div class="quick-grid">
+      <div class="quick-card" onclick="showTab('schedule')">
+        <div class="icon">🗓</div>
+        <div class="title">Расписание</div>
+        <div class="desc">Программа сессии по блокам</div>
       </div>
-      <div class="card" style="cursor:pointer;transition:border-color .2s" onmouseenter="this.style.borderColor='var(--red)'" onmouseleave="this.style.borderColor='var(--border)'" onclick="showTab('participants')">
-        <div style="font-size:28px;margin-bottom:8px">👥</div>
-        <div style="font-weight:700;margin-bottom:4px">Участники</div>
-        <div style="font-size:13px;color:var(--muted)">Профили и роли команды</div>
+      <div class="quick-card" onclick="showTab('participants')">
+        <div class="icon">👥</div>
+        <div class="title">Участники</div>
+        <div class="desc">Профили и роли команды</div>
       </div>
-      <div class="card" style="cursor:pointer;transition:border-color .2s" onmouseenter="this.style.borderColor='var(--red)'" onmouseleave="this.style.borderColor='var(--border)'" onclick="showTab('docs')">
-        <div style="font-size:28px;margin-bottom:8px">📄</div>
-        <div style="font-weight:700;margin-bottom:4px">Документы</div>
-        <div style="font-size:13px;color:var(--muted)">Материалы и презентации</div>
+      <div class="quick-card" onclick="showTab('docs')">
+        <div class="icon">📄</div>
+        <div class="title">Документы</div>
+        <div class="desc">Материалы и презентации</div>
       </div>
-      <div class="card" style="cursor:pointer;transition:border-color .2s" onmouseenter="this.style.borderColor='var(--red)'" onmouseleave="this.style.borderColor='var(--border)'" onclick="showTab('notes')">
-        <div style="font-size:28px;margin-bottom:8px">📝</div>
-        <div style="font-weight:700;margin-bottom:4px">Заметки</div>
-        <div style="font-size:13px;color:var(--muted)">Рабочие записи и итоги</div>
+      <div class="quick-card" onclick="showTab('notes')">
+        <div class="icon">📝</div>
+        <div class="title">Заметки</div>
+        <div class="desc">Рабочие записи и итоги</div>
       </div>
     </div>
 
@@ -403,7 +484,7 @@
           <div class="event-card">
             <div class="event-title">Открытие сессии</div>
             <div class="event-meta">Вступительное слово руководства. Цели и формат дня.</div>
-            <span class="tag tag-plenary">⬛ Пленарная</span>
+            <span class="tag tag-plenary">◆ Пленарная</span>
           </div>
         </div>
       </div>
@@ -414,7 +495,7 @@
           <div class="event-card">
             <div class="event-title">Блок 1 · Стратегический контекст</div>
             <div class="event-meta">Анализ рынка, текущее положение ГПМ Радио, вызовы и возможности</div>
-            <span class="tag tag-plenary">⬛ Пленарная</span>
+            <span class="tag tag-plenary">◆ Пленарная</span>
           </div>
         </div>
       </div>
@@ -424,7 +505,7 @@
         <div class="timeline-body">
           <div class="event-card">
             <div class="event-title">Перерыв на обед</div>
-            <div class="event-meta">— </div>
+            <div class="event-meta">—</div>
             <span class="tag tag-dinner">🍽 Обед</span>
           </div>
         </div>
@@ -447,7 +528,7 @@
           <div class="event-card">
             <div class="event-title">Блок 3 · Презентация результатов</div>
             <div class="event-meta">Каждая группа представляет выводы и предложения</div>
-            <span class="tag tag-plenary">⬛ Пленарная</span>
+            <span class="tag tag-plenary">◆ Пленарная</span>
           </div>
         </div>
       </div>
@@ -469,7 +550,7 @@
           <div class="event-card">
             <div class="event-title">Закрытие сессии</div>
             <div class="event-meta">Итоги, следующие шаги, договорённости</div>
-            <span class="tag tag-plenary">⬛ Пленарная</span>
+            <span class="tag tag-plenary">◆ Пленарная</span>
           </div>
         </div>
       </div>
@@ -589,7 +670,6 @@
     document.querySelectorAll('nav button')[tabs.indexOf(id)].classList.add('active');
   }
 
-  // Обновить счётчик участников
   document.getElementById('participants-count').textContent =
     document.querySelectorAll('.participant-card').length;
 </script>
