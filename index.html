@@ -243,6 +243,21 @@
     }
     .modal-close:hover { background:var(--blue-md); }
 
+    /* ── РЕКВИЗИТ ── */
+    .props-list { display:flex; flex-direction:column; gap:.6rem; }
+    .prop-item {
+      display:flex; align-items:flex-start; gap:.75rem;
+      background:var(--surface); border:1px solid var(--border);
+      border-radius:10px; padding:.9rem 1.1rem;
+      cursor:pointer; transition:border-color .2s, background .2s;
+      font-size:15px; line-height:1.4;
+    }
+    .prop-item:hover { border-color:var(--blue); }
+    .prop-item input[type=checkbox] { margin-top:2px; flex-shrink:0; accent-color:var(--blue); width:16px; height:16px; cursor:pointer; }
+    .prop-item:has(input:checked) { background:#f0f6ff; border-color:var(--blue); }
+    .prop-item:has(input:checked) > span { color:var(--muted); text-decoration:line-through; }
+    .prop-note { font-size:12px; color:var(--muted); font-style:italic; text-decoration:none !important; }
+
     .modal-body { padding:1.5rem; }
     .modal-body h3 { font-size:13px; text-transform:uppercase; letter-spacing:1px; color:var(--muted); margin-bottom:.8rem; }
 
@@ -313,6 +328,7 @@
   <button onclick="showTab('participants')">Участники</button>
   <button onclick="showTab('docs')">Документы</button>
   <button onclick="showTab('notes')">Заметки</button>
+  <button onclick="showTab('props')">Реквизит</button>
 </nav>
 
 <main>
@@ -732,6 +748,23 @@
       <div class="note-text">Сайт создан для хранения материалов стратегической сессии ГПМ Радио. Claude имеет доступ к файлу и может вносить правки: обновлять расписание, добавлять участников, менять статусы документов.</div>
     </div>
     <p style="color:var(--muted);font-size:13px">Новые заметки появятся здесь по мере работы над сессией.</p>
+  </section>
+
+  <section id="props" class="section">
+    <h2>Реквизит</h2>
+    <p style="color:var(--muted);font-size:13px;margin-bottom:1.5rem">Список материалов и инвентаря для сессии. Отмечайте готовность по мере подготовки.</p>
+    <div class="props-list">
+      <label class="prop-item"><input type="checkbox"><span>Метафорические карты <span class="prop-note">(уточнить количество копий)</span></span></label>
+      <label class="prop-item"><input type="checkbox"><span>Открывающая презентация — заставка мероприятия</span></label>
+      <label class="prop-item"><input type="checkbox"><span>Playlist</span></label>
+      <label class="prop-item"><input type="checkbox"><span>Стикеры</span></label>
+      <label class="prop-item"><input type="checkbox"><span>Видео и ролики</span></label>
+      <label class="prop-item"><input type="checkbox"><span>Теоретические слайды</span></label>
+      <label class="prop-item"><input type="checkbox"><span>Игры <span class="prop-note">(культуралли, world café — уточнить формат)</span></span></label>
+      <label class="prop-item"><input type="checkbox"><span>Фрейм «Моя идея»</span></label>
+      <label class="prop-item"><input type="checkbox"><span>Кружки для голосования за инициативы</span></label>
+      <label class="prop-item"><input type="checkbox"><span>Артефакт для круга</span></label>
+    </div>
   </section>
 
 </main>
